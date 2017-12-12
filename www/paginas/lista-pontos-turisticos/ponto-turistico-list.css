@@ -1,0 +1,42 @@
+body {
+	background-color: #f8f8f8;
+}
+
+p, span {
+	color: #000;
+	font-size: 18px;
+}
+
+b {
+	color: rgba(0,0,0,0.8);
+}
+
+.menu-link {
+    position: relative;
+    height: 56px;
+    width: 56px;
+    margin: 0;
+}
+
+.section .card .card-image {
+	background-color: #000;
+	border-radius: 5px;
+	height: 120px;
+}
+	.section .card .card-image img {
+	    opacity: 0.4;
+		height: 100%;
+	}
+
+
+.section .card .card-content {
+	color: #fff;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}

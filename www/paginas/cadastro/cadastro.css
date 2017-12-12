@@ -1,0 +1,32 @@
+/* Cadastro */
+.cadastro header {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background: #1a1d1a;
+}
+
+.cadastro header nav .brand-logo.right img,
+.cadastro header nav .brand-logo.center img,
+.cadastro header nav .brand-logo.left img {
+	min-width: 35px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.cadastro header .section {
+	min-height: 100vh;
+	max-height: 100%;
+	width: 100%;
+
+	padding-top: 5vh;
+
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: rgba(0,0,0,0.5);
+}
+.cadastro header .section .logo-big-center {
+	width: 30%;
+	margin: auto 35%;
+}

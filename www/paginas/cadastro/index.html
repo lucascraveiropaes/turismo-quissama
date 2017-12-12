@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <title>Turismo Quissamã</title>
+
+        <!--Import Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!--Import CSS -->
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="cadastro.css">
+    </head>
+
+    <body class="cadastro">
+    	<header>
+    		<nav class="transparent navbar-fixed">
+			    <div class="nav-wrapper">
+			      	<ul class="left">
+				        <li>
+				        	<a href="../../index.html" class="waves-effect waves-circle-2 waves-light transition">
+					        	<i class="material-icons">arrow_back</i>
+					        </a>
+				        </li>
+			      	</ul>
+			    </div>
+		  	</nav>
+
+            <div class="section" style="background-color: #007c7a">
+    		 	<div class="row">
+                    <img src="../../assets/img/icons/logo-branco.png" class="logo-big-center" style="margin-top: 5%">
+		      	</div>
+
+    		 	<div class="row">
+				    <form class="col s12" id="novo-usuario">
+				      	<div class="row">
+				        	<div class="input-field col s12">
+					          	<i class="material-icons prefix">account_circle</i>
+					          	<input id="primeiroNome" name="primeiroNome" type="text" class="validate">
+					          	<label for="primeiroNome">Primeiro Nome</label>
+				        	</div>
+				        </div>
+				      	<div class="row">
+				        	<div class="input-field col s12">
+					          	<i class="material-icons prefix">account_circle</i>
+					          	<input id="sobrenome" name="sobrenome" type="text" class="validate">
+					          	<label for="sobrenome">Sobrenome</label>
+				        	</div>
+				        </div>
+				      	<div class="row">
+				        	<div class="input-field col s12">
+								<i class="material-icons prefix">email</i>
+								<input id="email" type="email" class="validate">
+								<label for="email">Email</label>
+				        	</div>
+				        </div>
+				      	<div class="row">
+				        	<div class="input-field col s12">
+								<i class="material-icons prefix">lock</i>
+								<input id="senha" name="senha" type="password" class="validate">
+								<label for="senha">Senha</label>
+				        	</div>
+				        </div>
+				      	<div class="row" style="text-align: center;">
+				      		<button class="waves-effect waves-light btn-large btn-outline btn-block" type="submit" id="botao-cadastrar">Cadastrar</button>
+				      	</div>
+				    </form>
+			  	</div>
+    		</div>
+    	</header>
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/functions.js"></script>
+        <script type="text/javascript" src="cadastro.js"></script>
+    </body>
+</html>
