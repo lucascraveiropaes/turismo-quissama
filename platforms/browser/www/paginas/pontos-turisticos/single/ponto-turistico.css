@@ -1,0 +1,86 @@
+p, span {
+	color: #000;
+	font-size: 18px;
+}
+
+b {
+	color: rgba(0,0,0,0.8);
+}
+
+.background-menu {
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-size: cover;
+}
+
+.background-menu:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5); 
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.menu-link {
+    position: relative;
+    height: 56px;
+    width: 56px;
+    margin: 0;
+}
+	#search-bar.search-show .menu-link,
+	#search-bar.search-show * input .menu-link {
+		display: none;
+	}
+
+#content {
+	padding-top: 0px !important;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.section-top .card {
+	margin-top: 0;
+}
+
+.section-top .card .card-image {
+	background-color: #000;
+}
+	.section-top .card .card-image img {
+	    opacity: 0.5;
+	}
+
+
+.section-top .card .card-content {
+	color: #fff;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+ul.meta-list {
+	text-align: center;
+}
+
+.meta-list li {
+	margin: 15px 20px;
+	display: inline-block;
+}
+	.meta-list li:first-child {
+		margin-left: 0px;
+	}
+	.meta-list li:last-child {
+		margin-right: 0px;
+	}
+	.meta-list li span {
+		padding: 5px 0px;
+		border-bottom: 1px solid #000;
+	}

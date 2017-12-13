@@ -1,7 +1,22 @@
 /* General Settings */
 
 body {
-	background-color: #1a1d1a;
+	background-color: #f7f7f7;
+}
+p, span {
+	color: #000;
+	font-size: 18px;
+}
+
+b {
+	color: rgba(0,0,0,0.8);
+}
+
+.menu-link {
+    position: relative;
+    height: 56px;
+    width: 56px;
+    margin: 0;
 }
 
 
@@ -134,3 +149,161 @@ nav.transparent {
 input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
 	border: none;
 }
+/* Collection */
+
+.collection {
+	margin: 0px -5px;
+    border: none;
+}
+	.collection .collection-item {
+		border-bottom: 1px solid #efefef;
+	}
+
+		.collection .collection-item:first-child {
+			border-top: 1px solid #efefef;
+		}
+
+		.collection .collection-item:last-child {
+			border-bottom: 1px solid #efefef;
+		}
+
+	.collection .collection-item * {
+		color: rgba(0,0,0,0.8);
+	}
+
+	.collection .collection-item i {
+	    color: #009688;
+	}
+
+	.collection .collection-item.avatar {
+	    max-height: 100%;
+	    min-height: 60px;
+	}
+
+	.collection .collection-item.avatar .collection-icon {
+	    position: absolute;
+	    width: 42px;
+	    height: 42px;
+	    overflow: hidden;
+	    left: 15px;
+	    padding: 8px 0px;
+	    display: inline-block;
+	    text-align: center;
+	}
+
+	.collection .collection-item.avatar .title {
+	    position: absolute;
+	    top: 20px;
+	    left: 73px;
+	}
+
+/* Card Content-Center */
+.section .card.card-center .card-image {
+	background-color: #000;
+	border-radius: 5px;
+	height: 120px;
+}
+	.section .card.card-center .card-image img {
+	    opacity: 0.4;
+		height: 100%;
+	}
+
+
+.section .card.card-center .card-content {
+	color: #fff;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+/* Timeline Circle */
+.timeline-circle {
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    padding-top: 50px;
+    list-style-type: none;
+}
+
+.timeline-circle:before {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    content: ' ';
+    display: block;
+    width: 10px;
+    height: 100%;
+    margin-left: -5px;
+    background: #14cebc;
+    z-index: 5;
+}
+	.timeline-circle:first-child:before {
+	    position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    height: 50%;
+	}
+	.timeline-circle:last-child:before {
+	    position: absolute;
+	    left: 50%;
+	    bottom: 50%;
+	    height: 50%;
+	}
+
+.timeline-circle li {
+    padding: 1em 0;
+    width: 100%
+}
+
+.timeline-circle .circle {
+    height: 250px;
+    width: 250px;
+
+    font-size: 1.5em;
+    font-style: italic;
+    line-height: 1.5em;
+
+    border-radius: 50%;
+    border: 3px solid #fff;
+
+    position: relative;
+    margin: auto auto 5em;
+    padding: 0;
+    z-index: 15;
+
+    color: #FFF;
+    background: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+    .timeline-circle .circle img {
+        border-radius: 50%;
+        display: block;
+        position: relative;
+
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+    }
+
+    .timeline-circle .circle .content {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }

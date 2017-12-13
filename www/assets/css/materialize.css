@@ -36,11 +36,11 @@
 }
 
 .materialize-red.lighten-2 {
-  background-color: #A03D41 !important;
+  background-color: #000000 !important;
 }
 
 .materialize-red-text.text-lighten-2 {
-  color: #A03D41 !important;
+  color: #000000 !important;
 }
 
 .materialize-red.lighten-1 {
@@ -982,8 +982,12 @@
   color: #00b8d4 !important;
 }
 
-.teal {
+.teal-original {
   background-color: #009688 !important;
+}
+
+.teal {
+  background: linear-gradient(150deg, #009688, #14cebc) !important;
 }
 
 .teal-text {
@@ -2639,7 +2643,7 @@ a {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #A03D41;
+  border-left: 5px solid #000000;
 }
 
 i {
@@ -2699,7 +2703,7 @@ video.responsive-video {
 }
 
 .pagination li.active {
-  background-color: #A03D41;
+  background-color: #000000;
 }
 
 .pagination li.disabled a {
@@ -2886,7 +2890,7 @@ ul.staggered-list li {
 .page-footer {
   padding-top: 20px;
   color: #fff;
-  background-color: #A03D41;
+  background-color: #000000;
 }
 
 .page-footer .footer-copyright {
@@ -4214,7 +4218,7 @@ nav ul a span.badge {
 
 nav {
   color: #fff;
-  background-color: #A03D41;
+  background-color: #000000;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -5054,7 +5058,7 @@ small {
 }
 
 .tabs .tab a {
-  color: rgba(238, 110, 115, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   display: block;
   width: 100%;
   height: 100%;
@@ -5068,12 +5072,12 @@ small {
 
 .tabs .tab a:hover, .tabs .tab a.active {
   background-color: transparent;
-  color: #A03D41;
+  color: #000000;
 }
 
 .tabs .tab.disabled a,
 .tabs .tab.disabled a:hover {
-  color: rgba(238, 110, 115, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   cursor: default;
 }
 
@@ -5081,7 +5085,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color: #14cebc;
   will-change: left, right;
 }
 
@@ -7348,13 +7352,13 @@ input[type=range]:focus::-ms-fill-upper {
 .table-of-contents a:hover {
   color: #a8a8a8;
   padding-left: 19px;
-  border-left: 1px solid #A03D41;
+  border-left: 1px solid #000000;
 }
 
 .table-of-contents a.active {
   font-weight: 500;
   padding-left: 18px;
-  border-left: 2px solid #A03D41;
+  border-left: 2px solid #000000;
 }
 
 .side-nav {
@@ -7577,7 +7581,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav .collapsible-body > ul:not(.collapsible) > li.active,
 .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: #A03D41;
+  background-color: #000000;
 }
 
 .side-nav .collapsible-body > ul:not(.collapsible) > li.active a,
@@ -8371,7 +8375,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   font-size: 1rem;
   border-radius: 50%;
-  background-color: #A03D41;
+  background-color: #000000;
   -webkit-box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
           box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
   width: 100%;

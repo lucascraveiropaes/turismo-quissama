@@ -53,14 +53,32 @@ $(document).ready(function() {
 });
 
 function getUrlVars() {
-  var vars = [], hash;
-  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
- 
-  for (var i = 0; i < hashes.length; i++) {
-    hash = hashes[i].split('=');
-    vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
-  }
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 
-  return vars;
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+
+    return vars;
 }
+
+$(document).on('scroll', function () {
+    if ( $( "nav" ).hasClass( "navbar-image" ) ) {
+        var sH = $('.section-top').height();
+        var $menu = $('nav.navbar-image');
+        
+        if ( ( sH - $menu.height() ) <= $(window).scrollTop() ) {
+            var bgURI = $('#section-card-bg').attr('src');
+            $('nav').removeClass("transparent");
+            $('nav').addClass("background-menu");
+            $('nav').css('background-image', 'url(' + bgURI + ')');
+        } else {
+            $('nav').addClass("transparent");
+            $('nav').removeClass("background-menu");
+            $('nav').css('background-image', 'none');     
+        }
+    }
+});
