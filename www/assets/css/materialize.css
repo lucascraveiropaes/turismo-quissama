@@ -6513,7 +6513,7 @@ textarea.materialize-textarea.validate + label:not(.label-icon).active {
 }
 
 .hiddendiv {
-  display: none;
+  display: block;
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -7407,7 +7407,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav li > a {
-  color: #fff;
+  color: #000;
   display: block;
   font-size: 14px;
   font-weight: 500;
@@ -7448,8 +7448,7 @@ input[type=range]:focus::-ms-fill-upper {
   line-height: 48px;
   margin: 0 32px 0 0;
   width: 24px;
-  /*color: rgba(0, 0, 0, 0.54);*/
-  color: #fff;
+  color: rgba(0, 0, 0, 1);
 }
 
 .side-nav .divider {
@@ -7474,7 +7473,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: relative;
   padding: 32px 32px 0;
   margin-bottom: 8px;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.06);
 }
 
 .side-nav .user-view > a,
@@ -7541,7 +7540,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .drag-target {
-  display: none;
+  display: block;
   height: 100%;
   width: 10px;
   position: fixed;

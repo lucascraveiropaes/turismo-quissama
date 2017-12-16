@@ -198,28 +198,29 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 	}
 
 /* Card Content-Center */
-.section .card.card-center .card-image {
+.card.card-center .card-image {
 	background-color: #000;
 	border-radius: 5px;
-	height: 120px;
+	min-height: 120px;
+	height: 100%;
 }
-	.section .card.card-center .card-image img {
+	.card.card-center .card-image img {
 	    opacity: 0.4;
 		height: 100%;
 	}
 
 
-.section .card.card-center .card-content {
-	color: #fff;
-    position: absolute;
-    width: 100%;
-    text-align: center;
+	.card.card-center .card-content {
+		color: #fff;
+	    position: absolute;
+	    width: 100%;
+	    text-align: center;
 
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-}
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+	}
 
 /* Timeline Circle */
 .timeline-circle {
@@ -307,3 +308,193 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+
+
+/*
+ *
+ * PAGES
+ *
+ */
+
+/* Cadastro */
+
+	.cadastro header {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background: #1a1d1a;
+	}
+
+	.cadastro header nav .brand-logo.right img,
+	.cadastro header nav .brand-logo.center img,
+	.cadastro header nav .brand-logo.left img {
+		min-width: 35px;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+
+	.cadastro header .section {
+		min-height: 100vh;
+		max-height: 100%;
+		width: 100%;
+
+		padding-top: 5vh;
+
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-color: rgba(0,0,0,0.5);
+	}
+	.cadastro header .section .logo-big-center {
+		width: 30%;
+		margin: auto 35%;
+	}
+
+/* Login */
+
+	.login header {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background: #1a1d1a;
+	}
+
+	.login header nav .brand-logo.right img,
+	.login header nav .brand-logo.center img,
+	.login header nav .brand-logo.left img {
+		min-width: 35px;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+
+	.login header .section {
+		min-height: 100vh;
+		max-height: 100%;
+		width: 100%;
+
+		padding-top: 10vh;
+
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-color: rgba(0,0,0,0.5);
+	}
+	.login header .section #logo-login {
+		z-index: 1;
+		position: absolute;
+		width: 8%;
+		right: 20px;
+		top: 10px;
+	}
+	.login header .section .button-group {
+		padding-top: 60vh;
+		text-align: center;
+	}
+		.login header .section .button-group a {
+			width: 80%;
+		}
+		.login header .section .button-group a:first-child {
+			margin-bottom: 20px;
+		}
+
+/* Config */
+
+	.config .top-card {
+		margin-top: 20px;
+		text-align: center;
+	}
+		.config .top-card img {
+			width: 30%;
+			display: inline-flex;
+			background: #FFF;
+			padding: 10px;
+		}
+
+/* Single */
+	.single p, span {
+		color: #000;
+		font-size: 18px;
+	}
+
+	b {
+		color: rgba(0,0,0,0.8);
+	}
+
+	.single .background-menu {
+		background-repeat: no-repeat;
+		background-position: bottom;
+		background-size: cover;
+	}
+
+	.single .background-menu:after {
+	    content : "";
+	    display: block;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    background-color: rgba(0,0,0,0.5); 
+	    width: 100%;
+	    height: 100%;
+	    z-index: -1;
+	}
+
+	.single .menu-link {
+	    position: relative;
+	    height: 56px;
+	    width: 56px;
+	    margin: 0;
+	}
+		.single #search-bar.search-show .menu-link,
+		.single #search-bar.search-show * input .menu-link {
+			display: none;
+		}
+
+	.single #content {
+		padding-top: 0px !important;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.single .section-top .card {
+		margin-top: 0;
+	}
+
+	.single .section-top .card .card-image {
+		background-color: #000;
+	}
+		.single .section-top .card .card-image img {
+		    opacity: 0.5;
+		}
+
+
+	.single .section-top .card .card-content {
+		color: #fff;
+	    position: absolute;
+	    width: 100%;
+	    text-align: center;
+
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+	}
+
+	.single ul .meta-list {
+		text-align: center;
+	}
+
+	.single .meta-list li {
+		margin: 15px 20px;
+		display: inline-block;
+	}
+		.single .meta-list li:first-child {
+			margin-left: 0px;
+		}
+		.single .meta-list li:last-child {
+			margin-right: 0px;
+		}
+		.single .meta-list li span {
+			padding: 5px 0px;
+			border-bottom: 1px solid #000;
+		}

@@ -70,7 +70,7 @@ $(document).on('scroll', function () {
         var sH = $('.section-top').height();
         var $menu = $('nav.navbar-image');
         
-        if ( ( sH - $menu.height() ) <= $(window).scrollTop() ) {
+        if ( ( sH - ($menu.height()+56) ) <= $(window).scrollTop() ) {
             var bgURI = $('#section-card-bg').attr('src');
             $('nav').removeClass("transparent");
             $('nav').addClass("background-menu");
