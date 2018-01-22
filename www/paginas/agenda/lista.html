@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <title>Configurações - Turismo Quissamã</title>
+
+        <!--Import Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!--Import CSS -->
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="config.css">
+    </head>
+
+    <body class="config">
+        <nav class="nav-extended teal navbar-fixed">
+            <div class="nav-wrapper">
+                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+                    <i class="material-icons">arrow_back</i>
+                </a>
+
+                <a href="#" class="brand-logo center" style="font-size: 1.65em">Agenda</a>
+
+                <a href="#" class="button-search">
+                    <i class="material-icons">search</i>
+                </a>
+
+                <div id="search-bar">
+                    <form>
+                        <div class="input-field">
+                            <input id="search-input" type="search" required>
+                            <i class="material-icons" id="close-search">close</i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div id="content">
+        	<div class="section">
+
+                <div class="row">
+                    <ul class="collection">
+                        <!-- Perfil -->
+                        <li class="collection-item avatar">
+                            <span class="agenda-icon">A</span>
+
+                            <span class="title">Amanda</span>
+                        </li>
+                        <li class="collection-item avatar">
+                            <span class="agenda-icon">L</span>
+
+                            <span class="title">Lucas</span>
+                        </li>
+                    </ul>
+                              
+                </div>
+            </div>
+        </div>
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/functions.js"></script>
+
+
+        <style>
+            .agenda-icon {
+                background: #00FF00;
+                position: absolute;
+                margin: 10px;
+                height: 40px;
+                width: 40px;
+                left: 0;
+                top: 0;
+                padding: 10px;
+                border-radius: 50%;
+                text-align: center
+            }
+        </style>
+
+        <script>
+            $(document).ready( function() {
+                $('.agenda-icon').each(function() {
+                    $('.agenda-icon').css("background", gera_cor());
+                });
+            });
+
+            function gera_cor(){
+                var hexadecimais = '0123456789ABCDEF';
+                var cor = '#';
+              
+                // Pega um número aleatório no array acima
+                for (var i = 0; i < 6; i++ ) {
+                //E concatena à variável cor
+                    cor += hexadecimais[Math.floor(Math.random() * 16)];
+                } 
+            }
+        </script>
+    </body>
+</html>
