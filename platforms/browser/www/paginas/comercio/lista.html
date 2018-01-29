@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <title>Comércio - Turismo Quissamã</title>
+
+        <!--Import Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!--Import CSS -->
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/lista.css">
+    </head>
+
+    <body class="config">
+        <nav class="nav-extended teal navbar-fixed">
+            <div class="nav-wrapper">
+                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+                    <i class="material-icons">arrow_back</i>
+                </a>
+
+                <a href="#" class="brand-logo center" id="page-title" style="font-size: 1.65em"></a>
+            </div>
+        </nav>
+
+        <div id="content">
+            <div class="section">
+                <div class="row">
+                    <div class="top-card">
+                        <img src="../../assets/img/icons/logo.png" class="circle">
+                    </div>
+                </div>
+
+                <div id="loader">
+                    <div class="col s12">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card-list" style="padding: 15px"></div>
+
+        	</div>
+        </div>
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/functions.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                var id = $(window).GetURLParameter('id');
+
+                if ( id == "bancos" ) {
+                    alert("Bancos");
+                }
+
+                else if (id == "diversao") {
+                    alert("Diversão");
+                }
+
+                else if (id == "servicos") {
+                    alert("Serviços");
+                }
+
+                else {
+                    var url = "https://turismo-quissama.000webhostapp.com/categorias/" + id;
+                }
+
+                // Buscando nome da página pela categoria
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                }).done(function( data ) {
+
+                    $("#page-title").html(data[0].nome);
+                    
+                });
+
+                // Buscando lista na API
+                $.ajax({
+                    method: "GET",
+                    url: "https://turismo-quissama.000webhostapp.com/lugares"
+                }).done(function( data ) {
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(id);
+
+                        if( data[i].categoria_id == $(window).GetURLParameter('id') ) {
+                            var id      = data[i].id;
+                            var nome    = data[i].nome;
+                            var imagem  = data[i].imagens[0].url;
+                            var html    = "";
+
+                            html += '<div class="col s12"><a href="single.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
+                            html += '<img src="'+imagem+'">';
+                            html += '<div class="card-content"><h5 class="white-text">';
+                            html += nome;
+                            html += '</h5></div></div></div></a></div>';
+
+                            $('#card-list').append(html);
+                        }
+                    }
+
+                    $("#loader").hide();
+                    
+                });
+            });
+        </script>
+    </body>
+</html>

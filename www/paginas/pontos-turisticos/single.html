@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <title>Turismo Quissamã</title>
+
+        <!--Import Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!--Import CSS -->
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="single.css">
+    </head>
+
+    <body class="single">
+        <nav class="nav-extended transparent navbar-fixed navbar-image background-blur">
+            <div class="nav-wrapper">
+                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+                    <i class="material-icons">arrow_back</i>
+                </a>
+
+                <a href="#" class="right menu-link waves-effect waves-circle waves-light">
+                    <i class="material-icons">share</i>
+                </a>
+            </div>
+        </nav>
+
+        <div id="conteudo" style="display: none">
+            <div class="section-top">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="../../assets/img/bg/jurubatiba.jpg" class="image-blur" id="section-card-bg">
+
+                        <div class="card-content">
+                            <h4 id="lugar-nome"></h4>
+                        </div>
+                    </div>
+                    <ul class="tabs">
+                        <li class="tab col s3">
+                            <a class="active" href="#descricao">Descrição</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#informacoes">Informações</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#fotos">Fotos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="content">
+                <div class="row">
+                        
+                    <div id="descricao" class="col s12">
+                        <p id="lugar-descricao"></p>
+                    </div>
+                    <div id="informacoes" class="col s12">
+                        <p id="lugar-informacoes"></p>
+                    </div>
+                    <div id="fotos" class="col s12">
+                        <div id="lugar-fotos"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loader" style="padding-top: 300px;">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/functions.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                var id = $(window).GetURLParameter('id');
+                var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
+
+                $.ajax({
+                    method: "GET",
+                    url: url
+                }).done(function( data ) { //imagem_existe
+
+                    var id          = data[0].id;
+                    var nome        = data[0].nome;
+                    var descricao   = data[0].descricao;
+                    var informacoes = data[0].informacoes;
+                    var imagens     = data[0].imagens;
+                    var endereco    = data[0].endereco;
+                    var fInicio     = data[0].funcionamento_inicio;
+                    var fFim        = data[0].funcionamento_fim;
+                    var fotos       = "";
+
+                    for (i = 0; i < imagens.length; i++) {
+                        fotos += '<a href="#"><img src="'+ imagens[i].url +'" class="responsive-img" style="margin: 4px auto"></a>'
+                    }
+
+                    $("#section-card-bg").attr("src", imagens[0].url );
+                    $("#lugar-nome").html( nome );
+                    $("#lugar-descricao").html( descricao );
+                    $("#lugar-informacoes").html( informacoes );
+                    $("#lugar-fotos").append( fotos );
+
+                    $('#conteudo').show();
+
+                    $("#loader").hide();   
+                });
+            });
+        </script>
+    </body>
+</html>

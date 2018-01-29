@@ -9,9 +9,9 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../../../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="ponto-turistico-list.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="lista.css">
     </head>
 
     <body>
@@ -71,7 +71,7 @@
         				<a href="../single/index.html">
 	    					<div class="card">
 						        <div class="card-image" style="height: 180px;">
-						          	<img src="../../../assets/img/bg/jurubatiba.jpg">
+						          	<img src="../../assets/img/bg/jurubatiba.jpg">
 							        <div class="card-content">
 							          	<span class="white-text">Restinga de Jurubatiba</span>
 							        </div>
@@ -86,8 +86,8 @@
 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../../../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../../../assets/js/functions.js"></script>
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/functions.js"></script>
         <script type="text/javascript" src="ponto-turistico-list.js"></script>
 
         <script>
@@ -105,7 +105,7 @@
                         var imagem  = data[i].imagens[0].url;
                         var html    = "";
 
-                        html += '<div class="col s12"><a href="../single/index.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
+                        html += '<div class="col s12"><a href="single.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
                         html += '<img src="'+imagem+'">';
                         html += '<div class="card-content"><span class="white-text">';
                         html += nome;

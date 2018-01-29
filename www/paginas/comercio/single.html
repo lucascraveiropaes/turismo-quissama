@@ -3,18 +3,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Turismo Quissamã</title>
+        <title>Comércio - Turismo Quissamã</title>
 
         <!--Import Google Icon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../../../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="ponto-turistico.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/single.css">
     </head>
 
-    <body class="single">
+    <body class="config">
         <nav class="nav-extended transparent navbar-fixed navbar-image background-blur">
             <div class="nav-wrapper">
                 <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
@@ -80,12 +80,10 @@
                 </div>
             </div>
         </div>
-
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../../../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../../../assets/js/functions.js"></script>
-        <script type="text/javascript" src="ponto-turistico.js"></script>
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/functions.js"></script>
 
         <script>
             $(document).ready(function () {
@@ -107,6 +105,8 @@
                     var fInicio     = data[0].funcionamento_inicio;
                     var fFim        = data[0].funcionamento_fim;
                     var fotos       = "";
+
+                    $("#page-title").html( nome );
 
                     for (i = 0; i < imagens.length; i++) {
                         fotos += '<a href="#"><img src="'+ imagens[i].url +'" class="responsive-img" style="margin: 4px auto"></a>'
