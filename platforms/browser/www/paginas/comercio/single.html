@@ -104,15 +104,21 @@
                     var endereco    = data[0].endereco;
                     var fInicio     = data[0].funcionamento_inicio;
                     var fFim        = data[0].funcionamento_fim;
+                    var cover       = "../../assets/img/default.jpg";
                     var fotos       = "";
+
+                    if(data[0].imagem_existe == true) {
+                        for (i = 0; i < imagens.length; i++) {
+                            fotos += '<a href="#"><img src="'+ imagens[i].url +'" class="responsive-img" style="margin: 4px auto"></a>';
+                        }
+                        cover = imagens[0].url;
+                    } else {
+                        fotos += '<a href="#"><img src="../../assets/img/default.jpg" class="responsive-img" style="margin: 4px auto"></a>';
+                    }
 
                     $("#page-title").html( nome );
 
-                    for (i = 0; i < imagens.length; i++) {
-                        fotos += '<a href="#"><img src="'+ imagens[i].url +'" class="responsive-img" style="margin: 4px auto"></a>'
-                    }
-
-                    $("#section-card-bg").attr("src", imagens[0].url );
+                    $("#section-card-bg").attr("src", cover );
                     $("#lugar-nome").html( nome );
                     $("#lugar-descricao").html( descricao );
                     $("#lugar-informacoes").html( informacoes );

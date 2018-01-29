@@ -7,40 +7,52 @@
 
         <!--Import Google Icon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-        <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="index.css">
     </head>
 
     <body class="index">
     	<header>
-            <div class="section-image" style="background-color: #007c7a">
-                <div class="row button-group">
-                    <a href="paginas/circuitos/circuitos-historicos/">
-                    <img src="assets/img/icons/logo-branco.png" class="logo-big-center" style="margin-top: -5%"></a>
-                    
-	    			<a class="waves-effect waves-light btn-large btn-block btn-outline transition" href="paginas/login.html">
-                        Fazer Login
-                    </a><br>
-	    			<a class="waves-effect waves-light btn-large btn-block btn-outline transition" href="paginas/main.html">
-                        Visitante
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col s10 offset-s1">
-                        <a class="waves-effect waves-light btn-link center transition" style="width: 100%" href="paginas/cadastro.html">
-                            Não possui uma conta? Crie agora
-                        </a>
-                    </div>
-                </div>
-    		</div>
+            <img src="assets/img/icons/logo-branco.png">
     	</header>
-
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="assets/js/functions.js"></script>
     </body>
+
+    <style type="text/css">
+        html, body, header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #007c7a;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        img.pulse {
+            width: 65%;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/packages/jquery.pulse.min.js"></script>
+
+    <script type="text/javascript">
+        window.onload = pulse();
+
+        function pulse() {
+            var img = $('img');
+            var originalWidth = img.width();
+
+            var properties = {
+               width : originalWidth * 1.1
+            };
+
+            img.pulse(properties, {duration : 1800, pulses : 2});
+
+            setTimeout( function() {
+                window.location.replace("./paginas/main.html")
+            }, 4000 );
+        }
+    </script>
 </html>
