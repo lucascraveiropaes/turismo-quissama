@@ -41,52 +41,25 @@
         	<div class="section">
         		<div class="row" style="margin-bottom: -30px;">
 
-                    <!-- Ponto 1 -->
-                    <ul class="timeline-circle">
-                        <li>
-                            <a href="./single.html">
-                                <div class="circle z-depth-4">
-                                    <img src="../../assets/img/bg/jurubatiba.jpg">
+                    <div id="circuito-lista" style="padding: 15px"></div>
 
-                                    <div class="content">
-                                        Parque Nacional Jurubatiba
+                    <div id="loader">
+                        <div class="col s12">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
                                     </div>
                                 </div>
-                            </a>
-                        </li>
-                    </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- Ponto 2 -->
-                    <ul class="timeline-circle">
-                        <li>
-                            <a href="./single.html">
-                                <div class="circle z-depth-4">
-                                    <img src="../../assets/img/bg/fazenda-machadinha.jpg">
-
-                                    <div class="content">
-                                        Parque Nacional Jurubatiba
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- Ponto 3 -->
-                    <ul class="timeline-circle">
-                        <li>
-                            <a href="./single.html">
-                                <div class="circle z-depth-4">
-                                    <img src="../../assets/img/bg/visgueiro.jpg">
-
-                                    <div class="content">
-                                        Praia do Visgueiro
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
-        		</div>
+                </div>
         	</div>
         </div>
 
@@ -94,5 +67,37 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                var id = $(window).GetURLParameter('id');
+
+                // Buscando lista na API
+                $.ajax({
+                    method: "GET",
+                    url: "https://turismo-quissama.000webhostapp.com/lugares"
+                }).done(function( data ) {
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        
+                        if( data[i].circuito_id == $(window).GetURLParameter('id') ) {
+                            var id      = data[i].id;
+                            var nome    = data[i].nome;
+                            var imagem  = data[i].imagens[0].url;
+                            var html    = "";
+
+                            html += '<ul class="timeline-circle"><li><a href="./single.html?id='+ id +'"><div class="circle z-depth-4">';
+                            html += '<img src="'+imagem+'">';
+                            html += '<div class="content">' + nome + '</div></div></a></li></ul>';
+
+                            $('#circuito-lista').append(html);
+                        }
+                    }
+
+                    $("#loader").hide();
+                    
+                });
+            });
+        </script>
     </body>
 </html>
