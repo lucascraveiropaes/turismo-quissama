@@ -99,24 +99,38 @@
             }).done(function( data ) {
                 for (var i = 0; i < data.length; i++) {
 
-                    var id      = data[i].id;
-                    var nome    = data[i].nome;
-                    var imagem  = data[i].imagens[0].url;
-                    var html    = "";
+                    if( validatePlace( data[i].categoria_id ) ) {
+                        var id      = data[i].id;
+                        var nome    = data[i].nome;
+                        var imagem  = data[i].imagens[0].url;
+                        var html    = "";
 
-                    html += '<div class="col s12"><a href="../single/index.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
-                    html += '<img src="'+imagem+'">';
-                    html += '<div class="card-content"><span class="white-text">';
-                    html += nome;
-                    html += '</span></div></div></div></a></div>';
+                        html += '<div class="col s12"><a href="../single/index.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
+                        html += '<img src="'+imagem+'">';
+                        html += '<div class="card-content"><span class="white-text">';
+                        html += nome;
+                        html += '</span></div></div></div></a></div>';
 
-                    $('#card-list').append(html);
+                        $('#card-list').append(html);
+                    }
                 }
 
                 $("#loader").hide();
                 
             });
         });
+
+        function validatePlace( ID ) {
+            console.log(ID);
+            if( ID == 5 || ID == 10 || ID == 11 || ID == 12 || ID == 13 || ID == 14 || ID == 15 || ID == 16 || ID == 17 || ID == 18 || ID == 19 || ID == 20 || ID == 30 || ID == 31 || ID == 34 || ID == 35 || ID == 36 || ID == 37 || ID == 18 || ID == 40 || ID == 43 ) {
+                console.log("TRUE: " + ID);
+                return true;
+
+            } else {
+                console.log("FALSE: " + ID);
+                return false;
+            }
+        }
         </script>
     </body>
 </html>

@@ -52,19 +52,6 @@ $(document).ready(function() {
     }
 });
 
-function getUrlVars() {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-
-    for (var i = 0; i < hashes.length; i++) {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-
-    return vars;
-}
-
 $(document).on('scroll', function () {
     if ( $( "nav" ).hasClass( "navbar-image" ) ) {
         var sH = $('.section-top').height();
@@ -91,3 +78,15 @@ $(function(){
         $(this).load(file);
     });
 });
+
+$.fn.GetURLParameter = function( sParam ){
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) { 
+            return decodeURIComponent(sParameterName[1]);
+        }
+    }
+}

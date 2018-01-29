@@ -19,6 +19,10 @@ b {
     margin: 0;
 }
 
+#loader {
+    text-align: center;
+    padding-top: 200px;
+}
 
 #content {
 	padding: 50px 5px 20px 5px;
@@ -427,16 +431,25 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 		background-size: cover;
 	}
 
-	.single .background-menu:after {
-	    content : "";
-	    display: block;
+	.background-blur:before {
+	    content: "";
 	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    background-color: rgba(0,0,0,0.5); 
-	    width: 100%;
+	    width : 100%;
 	    height: 100%;
+	    background: inherit;
 	    z-index: -1;
+
+	    filter        : blur(1px);
+	    -moz-filter   : blur(1px);
+	    -webkit-filter: blur(1px);
+	    -o-filter     : blur(1px);
+	}
+
+	.image-blur {
+	    filter        : blur(1px);
+	    -moz-filter   : blur(1px);
+	    -webkit-filter: blur(1px);
+	    -o-filter     : blur(1px);
 	}
 
 	.single .menu-link {
@@ -454,6 +467,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 		padding-top: 0px !important;
 		padding-left: 5px;
 		padding-right: 5px;
+	    padding-bottom: 0px;
 	}
 
 	.single .section-top .card {

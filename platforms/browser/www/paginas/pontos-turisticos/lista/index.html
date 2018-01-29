@@ -47,8 +47,26 @@
 				        	<span class="black-text">Os principais pontos turísticos da cidade:</span>
 				        </div>
         			</div>
+
+                    <div id="loader">
+                        <div class="col s12">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="card-list"></div>
         			
-        			<!-- Card 1 -->
+        			<!-- Card 1 >
         			<div class="col s12">
         				<a href="../single/index.html">
 	    					<div class="card">
@@ -60,127 +78,8 @@
 						        </div>
 		        			</div>
 	        			</a>
-        			</div>
-        			
-        			<!-- Card 2 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/visgueiro.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Praia do Visgueiro</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 3 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/barra-do-furado.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Praia de Barra do Furado</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 4 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/lagoa-feia.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Lagoa Feia</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 5 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/fazenda-trindade.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Fazenda Trindade</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 6 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/fazenda-sao-manoel.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Fazenda São Miguel</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 7 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/fazenda-sao-manoel.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Fazenda São Manoel</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 8 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/fazenda-santa-francisca.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Fazenda Santa Francisca</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 9 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/fazenda-mandiquera.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Fazenda Mandiquera</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 10 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/fazenda-machadinha.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Fazenda Machadinha</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
-        			
-        			<!-- Card 11 -->
-        			<div class="col s6">
-    					<div class="card">
-					        <div class="card-image">
-					          	<img src="../../../assets/img/bg/casa-mato-de-pipa.jpg">
-						        <div class="card-content">
-						          	<span class="white-text">Casa Mato de Pipa</span>
-						        </div>
-					        </div>
-	        			</div>
-        			</div>
+        			</div-->
+
         		</div>
         	</div>
         </div>
@@ -190,5 +89,48 @@
         <script type="text/javascript" src="../../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../../assets/js/functions.js"></script>
         <script type="text/javascript" src="ponto-turistico-list.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+            $.ajax({
+                method: "GET",
+                url: "https://turismo-quissama.000webhostapp.com/lugares"
+            }).done(function( data ) {
+                for (var i = 0; i < data.length; i++) {
+
+                    if( validatePlace( data[i].categoria_id ) ) {
+                        var id      = data[i].id;
+                        var nome    = data[i].nome;
+                        var imagem  = data[i].imagens[0].url;
+                        var html    = "";
+
+                        html += '<div class="col s12"><a href="../single/index.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
+                        html += '<img src="'+imagem+'">';
+                        html += '<div class="card-content"><span class="white-text">';
+                        html += nome;
+                        html += '</span></div></div></div></a></div>';
+
+                        $('#card-list').append(html);
+                    }
+                }
+
+                $("#loader").hide();
+                
+            });
+        });
+
+        function validatePlace( ID ) {
+            console.log(ID);
+            if( ID == 5 || ID == 10 || ID == 11 || ID == 12 || ID == 13 || ID == 14 || ID == 15 || ID == 16 || ID == 17 || ID == 18 || ID == 19 || ID == 20 || ID == 30 || ID == 31 || ID == 34 || ID == 35 || ID == 36 || ID == 37 || ID == 18 || ID == 40 || ID == 43 ) {
+                console.log("TRUE: " + ID);
+                return true;
+
+            } else {
+                console.log("FALSE: " + ID);
+                return false;
+            }
+        }
+        </script>
     </body>
 </html>
