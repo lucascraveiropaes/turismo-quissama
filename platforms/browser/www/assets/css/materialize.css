@@ -987,11 +987,11 @@
 }
 
 .teal {
-  background: linear-gradient(150deg, #009688, #14cebc) !important;
+  background: linear-gradient(150deg, #2e7545, #0cbfae) !important;
 }
 
 .teal-text {
-  color: #009688 !important;
+  color: #2e7545 !important;
 }
 
 .teal.lighten-5 {
@@ -5085,7 +5085,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #14cebc;
+  background-color: #0cbfae;
   will-change: left, right;
 }
 
@@ -7514,9 +7514,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav .user-view .circle,
 .side-nav .userView .circle {
-  height: 55px;
-  width: 55px;
-  margin: auto;
+    height: 60px;
+    width: 60px;
+    margin: auto;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid #d6d6d6;
 }
 
 .side-nav .user-view .name,
