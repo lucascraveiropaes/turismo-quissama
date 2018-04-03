@@ -97,21 +97,31 @@
                     url: url
                 }).done(function( data ) { //imagem_existe
 
-                    var id          = data[0].id;
-                    var nome        = data[0].nome;
-                    var descricao   = data[0].descricao;
-                    var informacoes = data[0].informacoes;
-                    var imagens     = data[0].imagens;
-                    var endereco    = data[0].endereco;
-                    var fInicio     = data[0].funcionamento_inicio;
-                    var fFim        = data[0].funcionamento_fim;
+                    var id          = data.id;
+                    var nome        = data.nome;
+                    var descricao   = data.descricao;
+                    var informacoes = data.informacoes;
+                    var imagens     = data.imagens;
+                    var endereco    = data.endereco;
+                    var fInicio     = data.funcionamento_inicio;
+                    var fFim        = data.funcionamento_fim;
                     var fotos       = "";
+                    var bg          = "";
 
-                    for (i = 0; i < imagens.length; i++) {
-                        fotos += '<a href="#"><img src="'+ imagens[i].url +'" class="responsive-img" style="margin: 4px auto"></a>'
+                    $("#page-title").html( nome );
+
+                    if (imagens.length > 0) {
+                        bg = imagens[0].url;
+                        for (i = 0; i < imagens.length; i++) {
+
+                            fotos += '<a class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
+                        }
+                    } else {
+                        bg = "../../assets/img/default.jpg";
+                        fotos += '<a class="galery-image" href="../../assets/img/default.jpg" data-lightbox="single"><img class="responsive-img" src="../../assets/img/default.jpg" alt="image-'+i+'"/></a>'
                     }
-
-                    $("#section-card-bg").attr("src", imagens[0].url );
+                    
+                    $("#section-card-bg").attr("src", bg );
                     $("#lugar-nome").html( nome );
                     $("#lugar-descricao").html( descricao );
                     $("#lugar-informacoes").html( informacoes );
@@ -119,7 +129,7 @@
 
                     $('#conteudo').show();
 
-                    $("#loader").hide();   
+                    $("#loader").hide();  
                 });
             });
         </script>

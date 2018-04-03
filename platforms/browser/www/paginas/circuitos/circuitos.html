@@ -81,7 +81,7 @@
                         if( data[i].categoria_id == $(window).GetURLParameter('id') ) {
                             var id      = data[i].id;
                             var nome    = data[i].nome;
-                            var imagem  = data[i].imagem;
+                            var imagem  = data[i].imagens[0].url;
                             var html    = "";
 
                             html += '<div class="col s12"><a href="./lista.html?id='+ id +'"><div class="card card-center"><div class="card-image" style="height: 180px;">';

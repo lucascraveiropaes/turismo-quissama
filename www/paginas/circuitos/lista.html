@@ -83,7 +83,10 @@
                         if( data[i].circuito_id == $(window).GetURLParameter('id') ) {
                             var id      = data[i].id;
                             var nome    = data[i].nome;
-                            var imagem  = data[i].imagens[0].url;
+                            var imagem  = "../../assets/img/default.jpg";
+                            if (data[i].imagens.length > 0) {
+                                imagem = data[i].imagens[0].url;
+                            }
                             var html    = "";
 
                             html += '<ul class="timeline-circle"><li><a href="./single.html?id='+ id +'"><div class="circle z-depth-4">';

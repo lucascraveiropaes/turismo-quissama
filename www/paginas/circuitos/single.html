@@ -12,6 +12,7 @@
         <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
         <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
         <link type="text/css" rel="stylesheet" href="../../assets/css/single.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/plugins/lightbox2/src/css/lightbox.min.css">
     </head>
 
     <body class="config">
@@ -60,7 +61,7 @@
                     <div id="informacoes" class="col s12">
                         <p id="lugar-informacoes"></p>
                     </div>
-                    <div id="fotos" class="col s12">
+                    <div id="fotos" class="col s12" style="padding: 0">
                         <div id="lugar-fotos"></div>
                     </div>
                 </div>
@@ -82,8 +83,16 @@
         </div>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../../assets/plugins/lightbox2/src/js/lightbox-plus-jquery.min.js"></script>
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
+
+        <style>
+            .galery-image {
+                max-width: 50%;
+                float: left;
+            }
+        </style>
 
         <script>
             $(document).ready(function () {
@@ -96,23 +105,31 @@
                     url: url
                 }).done(function( data ) { //imagem_existe
 
-                    var id          = data[0].id;
-                    var nome        = data[0].nome;
-                    var descricao   = data[0].descricao;
-                    var informacoes = data[0].informacoes;
-                    var imagens     = data[0].imagens;
-                    var endereco    = data[0].endereco;
-                    var fInicio     = data[0].funcionamento_inicio;
-                    var fFim        = data[0].funcionamento_fim;
+                    var id          = data.id;
+                    var nome        = data.nome;
+                    var descricao   = data.descricao;
+                    var informacoes = data.informacoes;
+                    var imagens     = data.imagens;
+                    var endereco    = data.endereco;
+                    var fInicio     = data.funcionamento_inicio;
+                    var fFim        = data.funcionamento_fim;
                     var fotos       = "";
+                    var bg          = "";
 
                     $("#page-title").html( nome );
 
-                    for (i = 0; i < imagens.length; i++) {
-                        fotos += '<a href="#"><img src="'+ imagens[i].url +'" class="responsive-img" style="margin: 4px auto"></a>'
-                    }
+                    if (imagens.length > 0) {
+                        bg = imagens[0].url;
+                        for (i = 0; i < imagens.length; i++) {
 
-                    $("#section-card-bg").attr("src", imagens[0].url );
+                            fotos += '<a class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
+                        }
+                    } else {
+                        bg = "../../assets/img/default.jpg";
+                        fotos += '<a class="galery-image" href="../../assets/img/default.jpg" data-lightbox="single"><img class="responsive-img" src="../../assets/img/default.jpg" alt="image-'+i+'"/></a>'
+                    }
+                    
+                    $("#section-card-bg").attr("src", bg );
                     $("#lugar-nome").html( nome );
                     $("#lugar-descricao").html( descricao );
                     $("#lugar-informacoes").html( informacoes );
