@@ -26,29 +26,56 @@
 
         <div id="content">
         	<div class="section">
+                
                 <div class="row">
                     <div class="top-card">
                         <img src="../../assets/img/icons/logo.png" class="circle">
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card card-center">
-                            <div class="card-image waves-effect waves-light">
-                                <img src="./img/bdp.jpg">
+                <div id="card-list" style="padding: 15px"></div>
 
-                                <a href="evento1/evento1.html" class="card-content">
-                                    <h5 class="white-text">Evento 1</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="loader"></div>
+            </div>
+        </div>
                 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#loader').append( loader() );
+                
+                $.ajax({
+                    method: "GET",
+                    url: "https://turismo-quissama.000webhostapp.com/eventos"
+                }).done(function( data ) {
+                    console.log(data);
+
+                    for (var i = 0; i < data.length; i++) {
+                        var id      = data[i].id;
+                        var nome    = data[i].nome;
+                        var imagem  = "../../assets/img/default.jpg";
+                        var html    = "";
+                        if(data[i].imagens.length > 0) {
+                            imagem = data[i].imagens[0].url;
+                        }
+
+                        html += '<div class="col s12"><a href="./evento.html?id='+ id +'"><div class="card card-center"><div class="card-image">';
+                        html += '<img src="'+imagem+'">';
+                        html += '<div class="card-content"><h5 class="white-text">';
+                        html += nome;
+                        html += '</h5></div></div></div></a></div>';
+
+                        $('#card-list').append(html);
+                    }
+
+                    $("#loader").hide();
+                    
+                });
+            });
+        </script>
     </body>
 </html>

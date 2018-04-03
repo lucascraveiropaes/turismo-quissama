@@ -48,9 +48,12 @@ b {
 
 .section-top .card .card-image {
 	background-color: #000;
+	height: 350px;
 }
 	.section-top .card .card-image img {
-	    opacity: 0.5;
+        opacity: 0.4;
+		height: 100%;
+		filter: blur(1.5px);
 	}
 
 

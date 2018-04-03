@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Turismo Quissamã</title>
+        <title>Eventos - Turismo Quissamã</title>
 
         <!--Import Google Icon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,10 +11,11 @@
         <!--Import CSS -->
         <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
         <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="single.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/single.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/plugins/lightbox2/src/css/lightbox.min.css">
     </head>
 
-    <body class="single">
+    <body class="config">
         <nav class="nav-extended transparent navbar-fixed navbar-image background-blur">
             <div class="nav-wrapper">
                 <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
@@ -31,7 +32,7 @@
             <div class="section-top">
                 <div class="card">
                     <div class="card-image">
-                        <img src="../../assets/img/bg/jurubatiba.jpg" class="image-blur" id="section-card-bg">
+                        <img src="../../assets/img/default.jpg" class="image-blur" id="section-card-bg">
 
                         <div class="card-content">
                             <h4 id="lugar-nome"></h4>
@@ -59,9 +60,10 @@
                     </div>
                     <div id="informacoes" class="col s12">
                         <p id="lugar-informacoes"></p>
+                        <div id="informacoes-extra"></div>
                     </div>
-                    <div id="fotos" class="col s12">
-                        <div id="lugar-fotos"></div>
+                    <div id="fotos" class="col s12" style="padding: 0">
+                        <div id="lugar-fotos" style="margin-top: -3px"></div>
                     </div>
                 </div>
             </div>
@@ -80,22 +82,29 @@
                 </div>
             </div>
         </div>
-
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../../assets/plugins/lightbox2/src/js/lightbox.js"></script>
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
 
+        <style>
+            .galery-image {
+                max-width: calc(50% - 10px);
+                margin: 2px 5px;
+                float: left;
+            }
+        </style>
+
         <script>
             $(document).ready(function () {
-
                 var id = $(window).GetURLParameter('id');
-                var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
+                var url = "https://turismo-quissama.000webhostapp.com/eventos/" + id;
 
                 $.ajax({
                     method: "GET",
                     url: url
-                }).done(function( data ) { //imagem_existe
+                }).done(function( data ) {
 
                     var id          = data.id;
                     var nome        = data.nome;
@@ -103,24 +112,33 @@
                     var informacoes = data.informacoes;
                     var imagens     = data.imagens;
                     var endereco    = data.endereco;
-                    var fInicio     = data.funcionamento_inicio;
-                    var fFim        = data.funcionamento_fim;
+                    var horario     = data.hora_inicio + "h - " + data.hora_fim + "h";
+                    var funcionamento = formatDate(data.data_inicio, data.data_fim);
                     var fotos       = "";
                     var bg          = "";
 
-                    $("#page-title").html( nome );
+                    var extra = "<p><b>Horário</b></p>";
+                    extra += "<p>"+horario+"</p>";
+                    extra += "<p><b>Funcionamento</b></p>";
+                    extra += "<p>"+funcionamento+"</p>";
 
                     if (imagens.length > 0) {
                         bg = imagens[0].url;
+                        style = 'style="max-width: 100%"';
+                        
                         for (i = 0; i < imagens.length; i++) {
+                            if (imagens.length > 1)
+                                style="";
 
-                            fotos += '<a class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
+                            fotos += '<a '+ style +' class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
                         }
                     } else {
                         bg = "../../assets/img/default.jpg";
-                        fotos += '<a class="galery-image" href="../../assets/img/default.jpg" data-lightbox="single"><img class="responsive-img" src="../../assets/img/default.jpg" alt="image-'+i+'"/></a>'
+                        fotos += '<a class="galery-image" style="max-width: 100%" href="'+bg+'" data-lightbox="single"><img class="responsive-img" src="'+bg+'" alt="image-1"/></a>'
                     }
-                    
+
+
+                    $("#informacoes-extra").html( extra );
                     $("#section-card-bg").attr("src", bg );
                     $("#lugar-nome").html( nome );
                     $("#lugar-descricao").html( descricao );
@@ -129,7 +147,7 @@
 
                     $('#conteudo').show();
 
-                    $("#loader").hide();  
+                    $("#loader").hide();   
                 });
             });
         </script>

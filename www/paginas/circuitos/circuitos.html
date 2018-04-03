@@ -81,10 +81,13 @@
                         if( data[i].categoria_id == $(window).GetURLParameter('id') ) {
                             var id      = data[i].id;
                             var nome    = data[i].nome;
-                            var imagem  = data[i].imagens[0].url;
+                            var imagem  = "../../assets/img/default.jpg";
                             var html    = "";
+                            if(data[i].imagens.length > 0) {
+                                imagem = data[i].imagens[0].url;
+                            }
 
-                            html += '<div class="col s12"><a href="./lista.html?id='+ id +'"><div class="card card-center"><div class="card-image" style="height: 180px;">';
+                            html += '<div class="col s12"><a href="./lista.html?id='+ id +'"><div class="card card-center"><div class="card-image">';
                             html += '<img src="'+imagem+'">';
                             html += '<div class="card-content"><h5 class="white-text">';
                             html += nome;

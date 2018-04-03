@@ -11,7 +11,6 @@
         <!--Import CSS -->
         <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
         <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="../../assets/css/lista.css">
     </head>
 
     <body class="config">
@@ -21,7 +20,7 @@
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-                <a href="#" class="brand-logo center" id="page-title" style="font-size: 1.65em"></a>
+                <a href="#" class="brand-logo center" id="page-title" style="font-size: 1.3em; width: 100%;"></a>
             </div>
         </nav>
 
@@ -33,23 +32,9 @@
                     </div>
                 </div>
 
-                <div id="loader">
-                    <div class="col s12">
-                        <div class="preloader-wrapper big active">
-                            <div class="spinner-layer spinner-green-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div><div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div><div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div id="card-list" style="padding: 15px"></div>
+
+                <div id="loader"></div>
 
         	</div>
         </div>
@@ -61,65 +46,82 @@
 
         <script>
             $(document).ready(function () {
-
-                var id = $(window).GetURLParameter('id');
-
-                if (id == "diversao") {
-                    alert("Diversão");
-                }
-
-                else if (id == "servicos") {
-                    alert("Serviços");
-                }
-
-                else {
-                    var url = "https://turismo-quissama.000webhostapp.com/categorias/" + id;
-                }
-
-                // Buscando nome da página pela categoria
-                $.ajax({
-                    method: "GET",
-                    url: url,
-                }).done(function( data ) {
-
-                    $("#page-title").html(data[0].nome);
-                    
-                });
-
-                // Buscando lista na API
+                $('#loader').append( loader() );
+                
                 $.ajax({
                     method: "GET",
                     url: "https://turismo-quissama.000webhostapp.com/lugares"
                 }).done(function( data ) {
-                    
-                    for (var i = 0; i < data.length; i++) {
-                        console.log(id);
+                    var id = $(window).GetURLParameter('id');
+                    $("#page-title").html( getTitle(id) );
 
-                        if( data[i].categoria_id == $(window).GetURLParameter('id') ) {
-                            var id      = data[i].id;
-                            var nome    = data[i].nome;
-                            var imagem  = "../../assets/img/default.jpg";
-                            var html    = "";
+                    var content = validate(id, data);
 
-                            if(data[i].imagem_existe == true) {
-                                imagem = data[i].imagens[0].url;
-                            }
-                            
-
-                            html += '<div class="col s12"><a href="single.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 100%;">';
-                            html += '<img src="'+imagem+'">';
-                            html += '<div class="card-content"><h5 class="white-text">';
-                            html += nome;
-                            html += '</h5></div></div></div></a></div>';
-
-                            $('#card-list').append(html);
+                    for (var i = 0; i < content.length; i++) {
+                        var itemId      = content[i].id;
+                        var nome    = content[i].nome;
+                        var imagem  = "../../assets/img/default.jpg";
+                        var html    = "";
+                        if(content[i].imagens.length > 0) {
+                            imagem = content[i].imagens[0].url;
                         }
+                        
+                        html += '<div class="col s12"><div class="card card-center"><div class="card-image waves-effect waves-light">';
+                        html += '<img src="'+imagem+'">';
+
+                        html += '<a href="../circuitos/single.html?id='+ itemId +'" class="card-content"><h5 class="white-text">'+nome+'</h5></a>';
+                        html += '</div></div></div>';
+
+                        $('#card-list').append(html);
                     }
 
                     $("#loader").hide();
                     
                 });
             });
+
+            function validate(ID = 0, data = []) {
+                var response = [];
+                var values = {
+                    1: [7],  // opcao: [ids relacionadas]
+                    2: [6],
+                    3: [5],
+                    4: [18, 41, 42, 43, 44, 45, 46, 49],
+                    5: [2, 17, 19, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31, 32, 33, 34, 50],
+                    6: [48],
+                }
+
+                for (var i = 0; i < values[ID].length; i++) {
+                    for (var j = 0; j < data.length; j++) {
+                        if (values[ID][i] == parseInt(data[j].categoria_id)) {
+                            response.push(data[j]);
+                        }
+                    }
+                }
+
+                return response;
+            }
+
+            function getTitle(ID) {
+                if(ID == 1) {
+                    return "Lanchonetes e Restaurantes"
+                }
+                else if(ID == 2) {
+                    return "Hotéis e Pousadas"
+                }
+                else if(ID == 3) {
+                    return "Postos de Gasolina"
+                }
+                else if(ID == 4) {
+                    return "Serviços"
+                }
+                else if(ID == 5) {
+                    return "Diversão"
+                }
+                else if(ID == 6) {
+                    return "Bancos"
+                }
+            }
         </script>
     </body>
 </html>

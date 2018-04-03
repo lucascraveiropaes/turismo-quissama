@@ -60,6 +60,7 @@
                     </div>
                     <div id="informacoes" class="col s12">
                         <p id="lugar-informacoes"></p>
+                        <div id="informacoes-extra"></div>
                     </div>
                     <div id="fotos" class="col s12" style="padding: 0">
                         <div id="lugar-fotos" style="margin-top: -3px"></div>
@@ -111,24 +112,27 @@
                     var informacoes = data.informacoes;
                     var imagens     = data.imagens;
                     var endereco    = data.endereco;
-                    var fInicio     = data.funcionamento_inicio;
-                    var fFim        = data.funcionamento_fim;
+                    var horario     = data.hora_inicio + "h - " + data.hora_fim + "h";
+                    var functionamento = data.data_inicio + " - " + data.data_fim;
                     var fotos       = "";
                     var bg          = "";
 
-                    $("#page-title").html( nome );
-
                     if (imagens.length > 0) {
                         bg = imagens[0].url;
+                        style = 'style="max-width: 100%"';
+                        
                         for (i = 0; i < imagens.length; i++) {
+                            if (imagens.length > 1)
+                                style="";
 
-                            fotos += '<a class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
+                            fotos += '<a '+ style +' class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
                         }
                     } else {
                         bg = "../../assets/img/default.jpg";
-                        fotos += '<a class="galery-image" href="../../assets/img/default.jpg" data-lightbox="single"><img class="responsive-img" src="../../assets/img/default.jpg" alt="image-'+i+'"/></a>'
+                        fotos += '<a class="galery-image" style="max-width: 100%" href="'+bg+'" data-lightbox="single"><img class="responsive-img" src="'+bg+'" alt="image-1"/></a>'
                     }
                     
+                    $("#informacoes-extra").html( extra );
                     $("#section-card-bg").attr("src", bg );
                     $("#lugar-nome").html( nome );
                     $("#lugar-descricao").html( descricao );

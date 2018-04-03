@@ -90,3 +90,62 @@ $.fn.GetURLParameter = function( sParam ){
         }
     }
 }
+
+function loader() {
+    return  '<div class="col s12">' +
+                '<div class="preloader-wrapper big active">' +
+                    '<div class="spinner-layer spinner-green-only">' +
+                        '<div class="circle-clipper left">' +
+                            '<div class="circle"></div>' +
+                        '</div><div class="gap-patch">' +
+                            '<div class="circle"></div>' +
+                        '</div><div class="circle-clipper right">' +
+                            '<div class="circle"></div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+}
+
+function convertDate(date) {
+    var day = date.split("-")[0];
+    var month = date.split("-")[1];
+    var year = date.split("-")[2];
+
+    return month+"/"+day+"/"+year;
+}
+
+function formatDate(date1 = "", date2 = "") {
+    var jsDate1 = new Date(convertDate(date1));
+    var day1 = jsDate1.getDate();
+    var month1 = (jsDate1.getMonth()+1);
+    var year1 = jsDate1.getFullYear();
+
+    var jsDate2 = new Date(convertDate(date2));
+    var day2 = jsDate2.getDate();
+    var month2 = (jsDate2.getMonth()+1);
+    var year2 = jsDate2.getFullYear();
+
+
+    console.log(day1, day2);
+    console.log(month1, month2);
+    console.log(year1, year2);
+
+    var response = "Nos dias "+ day1 +"/"+month1+" até "+ day2 +"/"+month2+" de "+year1;
+
+    if (year1 == year2) {
+        if (month1 == month2) {
+            if (day1 === day2) {
+                response = day1+"/"+month1+"/"+year1;
+            }
+            else {
+                response = "Nos dias "+ day1 +" até "+ day2 +" do mês "+month2+" de "+year1;
+            }
+        }
+    }
+    else{
+        response = jsDate1.toLocaleDateString() + " até " + jsDate2.toLocaleDateString();
+    }
+
+    return response;
+}

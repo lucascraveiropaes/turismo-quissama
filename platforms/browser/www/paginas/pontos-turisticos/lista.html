@@ -11,7 +11,6 @@
         <!--Import CSS -->
         <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
         <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="lista.css">
     </head>
 
     <body>
@@ -48,21 +47,7 @@
 				        </div>
         			</div>
 
-                    <div id="loader">
-                        <div class="col s12">
-                            <div class="preloader-wrapper big active">
-                                <div class="spinner-layer spinner-green-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div><div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="loader"></div>
 
                     <div id="card-list"></div>
         		</div>
@@ -73,49 +58,46 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
-        <script type="text/javascript" src="ponto-turistico-list.js"></script>
 
         <script>
             $(document).ready(function () {
+                $('#loader').append( loader() );
 
-            $.ajax({
-                method: "GET",
-                url: "https://turismo-quissama.000webhostapp.com/lugares"
-            }).done(function( data ) {
-                for (var i = 0; i < data.length; i++) {
+                $.ajax({
+                    method: "GET",
+                    url: "https://turismo-quissama.000webhostapp.com/lugares"
+                }).done(function( data ) {
+                    
+                    for (var i = 0; i < data.length; i++) {
 
-                    if( validatePlace( data[i].categoria_id ) ) {
-                        var id      = data[i].id;
-                        var nome    = data[i].nome;
-                        var imagem  = data[i].imagens[0].url;
-                        var html    = "";
+                        if( validatePlace( data[i].circuito_id ) ) {
+                            var id      = data[i].id;
+                            var nome    = data[i].nome;
+                            var imagem  = "../../assets/img/default.jpg";
+                            if (data[i].imagens.length > 0) {
+                                imagem = data[i].imagens[0].url;
+                            }
+                            var html    = "";
 
-                        html += '<div class="col s12"><a href="single.html?id='+ id +'"><div class="card"><div class="card-image" style="height: 180px;">';
-                        html += '<img src="'+imagem+'">';
-                        html += '<div class="card-content"><span class="white-text">';
-                        html += nome;
-                        html += '</span></div></div></div></a></div>';
 
-                        $('#card-list').append(html);
+                            html += '<div class="col s12"><a href="../circuitos/single.html?id='+ id +'"><div class="card card-center"><div class="card-image">';
+                            html += '<img src="'+imagem+'">';
+                            html += '<div class="card-content"><h5 class="white-text">';
+                            html += nome;
+                            html += '</h5></div></div></div></a></div>';
+
+                            $('#card-list').append(html);
+                        }
                     }
-                }
 
-                $("#loader").hide();
-                
+                    $("#loader").hide();
+                    
+                });
             });
-        });
 
-        function validatePlace( ID ) {
-            console.log(ID);
-            if((ID >= 5 && ID <= 7) || (ID >= 19 && ID <= 26) || (ID >= 29 && ID <= 30) || (ID >= 31 && ID <= 35) || (ID >= 37 && ID <= 40) || (ID >= 42 && ID <= 46) || (ID > 48)) {
-                console.log("TRUE: " + ID);
-                return true;
-
-            } else {
-                console.log("FALSE: " + ID);
-                return false;
+            function validatePlace( ID ) {
+                return !((ID >= 5 && ID <= 7) || (ID >= 19 && ID <= 26) || (ID >= 29 && ID <= 30) || (ID >= 31 && ID <= 35) || (ID >= 37 && ID <= 40) || (ID >= 42 && ID <= 46) || (ID > 48) || (ID == 0));
             }
-        }
         </script>
     </body>
 </html>
