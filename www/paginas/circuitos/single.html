@@ -112,10 +112,12 @@
                     var informacoes = data.informacoes;
                     var imagens     = data.imagens;
                     var endereco    = data.endereco;
-                    var horario     = data.hora_inicio + "h - " + data.hora_fim + "h";
-                    var functionamento = data.data_inicio + " - " + data.data_fim;
+                    var horario     = data.funcionamento_inicio + "h - " + data.funcionamento_fim + "h";
                     var fotos       = "";
                     var bg          = "";
+
+                    var extra = "<p><b>Horário de Funcionamento</b></p>";
+                    extra += "<p>"+horario+"</p>";
 
                     if (imagens.length > 0) {
                         bg = imagens[0].url;
