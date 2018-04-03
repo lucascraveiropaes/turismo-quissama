@@ -62,7 +62,7 @@
                         <p id="lugar-informacoes"></p>
                     </div>
                     <div id="fotos" class="col s12" style="padding: 0">
-                        <div id="lugar-fotos"></div>
+                        <div id="lugar-fotos" style="margin-top: -3px"></div>
                     </div>
                 </div>
             </div>
@@ -83,24 +83,22 @@
         </div>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../../assets/plugins/lightbox2/src/js/lightbox-plus-jquery.min.js"></script>
+        <script src="../../assets/plugins/lightbox2/src/js/lightbox.js"></script>
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
 
         <style>
             .galery-image {
-                max-width: 50%;
+                max-width: calc(50% - 10px);
+                margin: 2px 5px;
                 float: left;
             }
         </style>
 
         <script>
             $(document).ready(function () {
-
                 var id = $(window).GetURLParameter('id');
-                //var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
-
-                var url = "http://localhost:9000/lugares/" + id;
+                var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
 
                 $.ajax({
                     method: "GET",
@@ -131,7 +129,6 @@
                         fotos += '<a class="galery-image" href="../../assets/img/default.jpg" data-lightbox="single"><img class="responsive-img" src="../../assets/img/default.jpg" alt="image-'+i+'"/></a>'
                     }
                     
-
                     $("#section-card-bg").attr("src", bg );
                     $("#lugar-nome").html( nome );
                     $("#lugar-descricao").html( descricao );
