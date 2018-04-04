@@ -17,13 +17,10 @@
         #search-result {
             position: absolute;
             top: 55px;
-            background-color: #fff;
-            height: 100%;
+            background-color: #f7f7f7;
+            padding-bottom: 30px;
             width: 100%;
             z-index: 3;
-            /*display: flex;
-            justify-content: center;
-            align-items: center;*/
         }
 
         .result-item {
@@ -66,41 +63,24 @@
             background: rgba(21, 183, 87, 0.5);
             padding: 2px 15px;
             float: right;
-            color: #FFF;
+            color: #f7f7f7;
             font-size: 1.15em;
             border-bottom-left-radius: 7px;
             border-top-left-radius: 7px;
+        }
+
+        .loader-container {
+            max-height: 100%;
+            min-height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 
 <body class="main">
-    <div id="search-result">
-        <div class="result-item">
-            <div class="result-item-image" style="background-image: url('../assets/img/bg/jurubatiba.jpg')"></div>
-            <div class="result-item-content">
-                <h4>Parque Nacional da Restinga de Jurubatiba</h4>
-                <p>O parque é uma área de preservação dedicada ao...</p>
-            </div>
-            <span class="result-item-category">Lugar</span>
-        </div>
-        <div class="result-item">
-            <div class="result-item-image" style="background-image: url('../assets/img/bg/casa-mato-de-pipa.jpg')"></div>
-            <div class="result-item-content">
-                <h4>Banana Split com Maçã</h4>
-                <p>lero lero lero lero lero lero lero lero lero...</p>
-            </div>
-            <span class="result-item-category">Evento</span>
-        </div>
-        <div class="result-item">
-            <div class="result-item-image" style="background-image: url('../assets/img/bg/canal-campos-macae.jpg')"></div>
-            <div class="result-item-content">
-                <h4>Corrida na ciclovia</h4>
-                <p>Uma boa ideia para se manter saudável enquanto visit...</p>
-            </div>
-            <span class="result-item-category">Atividade</span>
-        </div>
-    </div>
     <nav class="nav-extended teal navbar-fixed">
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse">

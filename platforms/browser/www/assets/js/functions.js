@@ -9,24 +9,42 @@ $('.button-collapse').sideNav({
 );
 
 $(document).ready(function(){
-    //$('#search-result').append( loader() );
+    $('.main').prepend('<div id="search-result"></div>');
+    $('#search-result').append('<div class="loader-container">'+ loader() + '</div>');
     $('#search-result').hide();
 
     $("#search-input").on("change paste keyup", function() {
-        //alert(  );
         var query = $(this).val();
+        $('#content').hide();
         $('#search-result').show();
-
-        console.log("http://localhost:9000/search/"+query,);
 
         $.ajax({
             method: "GET",
-            url: "http://localhost:9000/search/"+query,
+            url: "https://turismo-quissama.000webhostapp.com/search/"+query,
         }).done(function( data ) {
-            console.log(data);
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                var imagem = data[i].imagem;
+                if (imagem == "") {
+                    imagem = "../assets/img/default.jpg";
+                }
+
+                var link = "/paginas/circuitos/single.html?id="+ data[i].id;
+                if (data[i].category == "Evento") {
+                    link = "/paginas/eventos/evento.html?id="+ data[i].id;
+                }
+
+                html += '<a href="'+link+'" class="result-item">' +
+                            '<div class="result-item-image" style="background-image: url('+imagem+')"></div>' +
+                            '<div class="result-item-content">' +
+                                '<h4>'+data[i].nome+'</h4>' +
+                                '<p>'+data[i].excerpt+'</p>' +
+                            '</div>' +
+                            '<span class="result-item-category">'+data[i].category+'</span>' +
+                        '</a>';
+                $("#search-result").html( html );
+            }
         });
-
-
     });
 
   	$('.button-search').click( function(){
@@ -41,6 +59,7 @@ $(document).ready(function(){
   	});
 
   	$('#close-search').click( function() {
+        $('#content').show();
 		$('#search-bar').removeClass("search-show");
   		$('.button-search').toggle(".hide");
   		$('.button-collapse').toggle(".hide");
