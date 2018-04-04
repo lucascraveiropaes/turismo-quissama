@@ -152,7 +152,7 @@ nav.transparent {
     padding-left: 2rem;
     width: calc(100% - 2rem);
 	z-index: 999;
-    font-size: 1.7em;
+    font-size: 1.3em;
 	color: rgba(0,0,0,0.7);
 }
 
