@@ -53,6 +53,7 @@ $(document).ready(function(){
   		$('#search-bar').addClass("search-show");
   		$('.button-search').toggle(".hide");
   		$('.button-collapse').toggle(".hide");
+  		$('.menu-link').toggle(".hide");
 
   		setTimeout(function(){
   			$('#search-input').focus();

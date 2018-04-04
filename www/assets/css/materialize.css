@@ -4284,9 +4284,10 @@ nav .brand-logo {
 }
 
 nav .brand-logo.center {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+    width: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
 }
 
 @media only screen and (max-width: 992px) {

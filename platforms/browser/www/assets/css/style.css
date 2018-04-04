@@ -141,6 +141,10 @@ nav.transparent {
 	z-index: 999 !important;
 }
 
+.search-show form .input-field #close-search {
+	color: rgba(0,0,0,0.7);
+}
+
 .nav-wrapper .input-field input[type=search] {
     height: 56px;
     background: #fff;
@@ -148,6 +152,8 @@ nav.transparent {
     padding-left: 2rem;
     width: calc(100% - 2rem);
 	z-index: 999;
+    font-size: 1.7em;
+	color: rgba(0,0,0,0.7);
 }
 
 input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
