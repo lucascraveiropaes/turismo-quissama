@@ -1,211 +1,300 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Turismo Quissamã</title>
 
-        <!--Import Google Icon Font -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>Turismo Quissamã</title>
 
-        <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../assets/css/style.css">
-    </head>
+    <!--Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <body class="main">
-        <nav class="nav-extended teal navbar-fixed">
-            <div class="nav-wrapper">
-                <a href="#" data-activates="mobile-demo" class="button-collapse">
+    <!--Import CSS -->
+    <link type="text/css" rel="stylesheet" href="../assets/css/materialize.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+        #search-result {
+            position: absolute;
+            top: 55px;
+            background-color: #fff;
+            height: 100%;
+            width: 100%;
+            z-index: 3;
+            /*display: flex;
+            justify-content: center;
+            align-items: center;*/
+        }
+
+        .result-item {
+            width: 100%;
+            align-items: center;
+            display: inline-flex;
+            padding: 20px;
+        }
+
+        .result-item h4 {
+            color: #000;
+            font-size: 1.45em;
+            margin: 5px 0;
+        }
+
+        .result-item p {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 1.05em;
+            margin: 5px 0;
+        }
+
+        .result-item .result-item-content {
+            padding: 10px 20px;
+            width: 80%;
+        }
+
+        .result-item .result-item-image {
+            height: 80px;
+            width: 80px;
+            background-position: center;
+            background-repeat: repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        .result-item .result-item-category {
+            position: absolute;
+            margin-top: 60px;
+            right: 0px;
+            background: rgba(21, 183, 87, 0.5);
+            padding: 2px 15px;
+            float: right;
+            color: #FFF;
+            font-size: 1.15em;
+            border-bottom-left-radius: 7px;
+            border-top-left-radius: 7px;
+        }
+    </style>
+</head>
+
+<body class="main">
+    <div id="search-result">
+        <div class="result-item">
+            <div class="result-item-image" style="background-image: url('../assets/img/bg/jurubatiba.jpg')"></div>
+            <div class="result-item-content">
+                <h4>Parque Nacional da Restinga de Jurubatiba</h4>
+                <p>O parque é uma área de preservação dedicada ao...</p>
+            </div>
+            <span class="result-item-category">Lugar</span>
+        </div>
+        <div class="result-item">
+            <div class="result-item-image" style="background-image: url('../assets/img/bg/casa-mato-de-pipa.jpg')"></div>
+            <div class="result-item-content">
+                <h4>Banana Split com Maçã</h4>
+                <p>lero lero lero lero lero lero lero lero lero...</p>
+            </div>
+            <span class="result-item-category">Evento</span>
+        </div>
+        <div class="result-item">
+            <div class="result-item-image" style="background-image: url('../assets/img/bg/canal-campos-macae.jpg')"></div>
+            <div class="result-item-content">
+                <h4>Corrida na ciclovia</h4>
+                <p>Uma boa ideia para se manter saudável enquanto visit...</p>
+            </div>
+            <span class="result-item-category">Atividade</span>
+        </div>
+    </div>
+    <nav class="nav-extended teal navbar-fixed">
+        <div class="nav-wrapper">
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
                     <i class="material-icons">menu</i>
                 </a>
 
-                <a href="#" class="brand-logo center" style="font-size: 1.5em">Turismo Quissamã</a>
+            <a href="#" class="brand-logo center" style="font-size: 1.5em">Turismo Quissamã</a>
 
-                <a href="#" class="button-search">
+            <a href="#" class="button-search">
                     <i class="material-icons">search</i>
                 </a>
 
-                <div id="search-bar">
-	                <form>
-	        			<div class="input-field">
-							<input id="search-input" type="search" required>
-							<i class="material-icons" id="close-search">close</i>
-						</div>
-					</form>
-				</div>
+            <div id="search-bar">
+                <form>
+                    <div class="input-field">
+                        <input id="search-input" type="search" required>
+                        <i class="material-icons" id="close-search">close</i>
+                    </div>
+                </form>
+            </div>
 
-				<style>
-					.media {
-						background: #000
-					}
-					.media img.bg {
-						position: absolute;
-						bottom: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
+            <style>
+                .media {
+                    background: #000
+                }
 
-						opacity: 0.6;
+                .media img.bg {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
 
-						-webkit-filter: blur(1.5px);
-						-moz-filter: blur(1.5px);
-						-o-filter: blur(1.5px);
-						-ms-filter: blur(1.5px);
-						filter: blur(1.5px);
-					}
+                    opacity: 0.6;
 
-					.media .user-image {
-						position: absolute;
-						bottom: -33px;
-						left: 20px;
-						border: 1px solid #FFF;
-						border-radius: 50%;
-						background: #FFF;
-						padding: 5px;
-					}
+                    -webkit-filter: blur(1.5px);
+                    -moz-filter: blur(1.5px);
+                    -o-filter: blur(1.5px);
+                    -ms-filter: blur(1.5px);
+                    filter: blur(1.5px);
+                }
 
-					.content {
-						position: absolute;
-						bottom: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
+                .media .user-image {
+                    position: absolute;
+                    bottom: -33px;
+                    left: 20px;
+                    border: 1px solid #FFF;
+                    border-radius: 50%;
+                    background: #FFF;
+                    padding: 5px;
+                }
 
-						z-index: 10;
-						position: absolute;
+                .content {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
 
-						padding-top: 60px;
-						text-align: center;
-					}
+                    z-index: 10;
+                    position: absolute;
 
-					.content .email {
-						color: #fff
-					}
+                    padding-top: 60px;
+                    text-align: center;
+                }
 
-                    .card .card-content {
-                        padding: 100px 20px !important;
-                    }
-				</style>
+                .content .email {
+                    color: #fff
+                }
 
-                <ul class="side-nav" id="mobile-demo" style="background: #FFF">
-                    <li style="margin-bottom: 30px">
-                        <div class="user-view center" style="min-height: 170px; background: #000">
-                        	<div class="media" style="z-index: 0">
-	                            <img class="bg" src="../assets/img/bg/jurubatiba.jpg">
-	                            <div class="user-image" style="">
-	                                <img class="circle" src="../assets/img/icons/logo-image.png">
-	                            </div>
-                        	</div>
-                        	<div class="content" style="">
-	                            <h4 style="font-size: 2.1rem;">Quissamã</h4>  
+                .card .card-content {
+                    padding: 100px 20px !important;
+                }
+            </style>
+
+            <ul class="side-nav" id="mobile-demo" style="background: #FFF">
+                <li style="margin-bottom: 30px">
+                    <div class="user-view center" style="min-height: 170px; background: #000">
+                        <div class="media" style="z-index: 0">
+                            <img class="bg" src="../assets/img/bg/jurubatiba.jpg">
+                            <div class="user-image" style="">
+                                <img class="circle" src="../assets/img/icons/logo-image.png">
                             </div>
                         </div>
-                    </li>
-                    <li>
-                        <a href="#" class="active">
+                        <div class="content" style="">
+                            <h4 style="font-size: 2.1rem;">Quissamã</h4>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="active">
                             <i class="material-icons">home</i> Início
                         </a>
-                    </li>
-                    <li>
-                        <a href="./circuitos/circuitos.html">
+                </li>
+                <li>
+                    <a href="./circuitos/circuitos.html">
                             <i class="material-icons">maps</i> Roteiros de Visitação
                         </a>
-                    </li>
-                    <li>
-                        <a href="./pontos-turisticos/lista.html">
+                </li>
+                <li>
+                    <a href="./pontos-turisticos/lista.html">
                             <i class="material-icons">local_dining</i> Atrativos Turísticos
                         </a>
-                    </li>
-                    <li>
-                        <a href="./comercio/categorias.html">
+                </li>
+                <li>
+                    <a href="./comercio/categorias.html">
                             <i class="material-icons">store</i> Comércio
                         </a>
-                    </li>
-                    <li>
-                        <a href="./atividades/lista.html">
+                </li>
+                <li>
+                    <a href="./atividades/lista.html">
                             <i class="material-icons">directions_bike</i> Recreação
                         </a>
-                    </li>
-                    <li>
-                        <a href="./agenda-telefonica/lista.html">
+                </li>
+                <li>
+                    <a href="./agenda-telefonica/lista.html">
                             <i class="material-icons">contact_phone</i> Agenda telefonica
                         </a>
-                    </li>
-                    <li>
-                        <a href="./config.html">
+                </li>
+                <li>
+                    <a href="./config.html">
                             <i class="material-icons">add_circle</i> Mais
                         </a>
-                    </li>
+                </li>
 
-                </ul>
-                
-            </div>
-        </nav>
-                
-        <div id="content">
-        	<div class="section">
-			  	<div class="row">
+            </ul>
 
-        			<!-- Card 1 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/bg/jurubatiba.jpg">
+        </div>
+    </nav>
 
-				              	<a href="./circuitos/circuitos.html" class="card-content">
-						          	<h5 class="white-text">Roteiros de Visitação</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
+    <div id="content">
+        <div class="section">
+            <div class="row">
 
-        			<!-- Card 2 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/bg/canal-campos-macae.jpg">
+                <!-- Card 1 -->
+                <div class="col s12">
+                    <div class="card card-center">
+                        <div class="card-image waves-effect waves-light">
+                            <img src="../assets/img/bg/jurubatiba.jpg">
 
-                        		<a href="pontos-turisticos/lista.html" class="card-content">
-						          	<h5 class="white-text">Atrativos Turísticos</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
+                            <a href="./circuitos/circuitos.html" class="card-content">
+                                <h5 class="white-text">Roteiros de Visitação</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        			<!-- Card 3 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-                                <img src="../assets/img/comercio/moraes.jpg">
-				              	<a href="./comercio/categorias.html" class="card-content">
-						          	<h5 class="white-text">Comércios</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
+                <!-- Card 2 -->
+                <div class="col s12">
+                    <div class="card card-center">
+                        <div class="card-image waves-effect waves-light">
+                            <img src="../assets/img/bg/canal-campos-macae.jpg">
 
-        			<!-- Card 4 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/bg/canal-campos-macae.jpg">
+                            <a href="pontos-turisticos/lista.html" class="card-content">
+                                <h5 class="white-text">Atrativos Turísticos</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-				              	<a href="./eventos/eventos.html" class="card-content">
-						          	<h5 class="white-text">Eventos</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
+                <!-- Card 3 -->
+                <div class="col s12">
+                    <div class="card card-center">
+                        <div class="card-image waves-effect waves-light">
+                            <img src="../assets/img/comercio/moraes.jpg">
+                            <a href="./comercio/categorias.html" class="card-content">
+                                <h5 class="white-text">Comércios</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col s12">
+                    <div class="card card-center">
+                        <div class="card-image waves-effect waves-light">
+                            <img src="../assets/img/bg/canal-campos-macae.jpg">
+
+                            <a href="./eventos/eventos.html" class="card-content">
+                                <h5 class="white-text">Eventos</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
 
-            	</div>
             </div>
         </div>
+    </div>
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../assets/js/functions.js"></script>
-    </body>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../assets/js/functions.js"></script>
+</body>
+
 </html>
