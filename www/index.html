@@ -1,58 +1,73 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Turismo Quissamã</title>
 
-        <!--Import Google Icon Font -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>Turismo Quissamã</title>
 
-    <body class="index">
-    	<header>
-            <img src="assets/img/icons/logo.png">
-    	</header>
-    </body>
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="ldpi" />
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="mdpi" />
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="hdpi" />
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="xhdpi" />
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="xxhdpi" />
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="xxxhdpi" />
+    <icon src="assets/img/icons/icon-app.png" platform="android" qualifier="fr-xxhdpi" />
 
-    <style type="text/css">
-        html, body, header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #FFF;
-            height: 100vh;
-            width: 100vw;
-        }
+    <!--Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-        img {
-            width: 50%;
-        }
+<body class="index">
+    <header>
+        <img src="assets/img/icons/logo.png">
+    </header>
+</body>
 
-        img.pulse {
-            width: 65%;
-        }
-    </style>
+<style type="text/css">
+    html,
+    body,
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFF;
+        height: 100vh;
+        width: 100vw;
+    }
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.pulse.min.js"></script>
+    img {
+        width: 50%;
+    }
 
-    <script type="text/javascript">
-        window.onload = pulse();
+    img.pulse {
+        width: 65%;
+    }
+</style>
 
-        function pulse() {
-            var img = $('img');
-            var originalWidth = img.width();
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.pulse.min.js"></script>
 
-            var properties = {
-               width : originalWidth * 1.1
-            };
+<script type="text/javascript">
+    window.onload = pulse();
 
-            img.pulse(properties, {duration : 1800, pulses : 2});
+    function pulse() {
+        var img = $('img');
+        var originalWidth = img.width();
 
-            setTimeout( function() {
-                window.location.replace("./paginas/main.html")
-            }, 4000 );
-        }
-    </script>
+        var properties = {
+            width: originalWidth * 1.1
+        };
+
+        img.pulse(properties, {
+            duration: 1800,
+            pulses: 2
+        });
+
+        setTimeout(function() {
+            window.location.replace("./paginas/main.html")
+        }, 4000);
+    }
+</script>
+
 </html>

@@ -23,15 +23,17 @@ $(document).ready(function(){
             url: "https://turismo-quissama.000webhostapp.com/search/"+query,
         }).done(function( data ) {
             var html = "";
+            var baseUrl = document.getElementById('main').getAttribute('data-url');
+
             for (var i = 0; i < data.length; i++) {
                 var imagem = data[i].imagem;
                 if (imagem == "") {
-                    imagem = "../assets/img/default.jpg";
+                    imagem = baseUrl+"../assets/img/default.jpg";
                 }
 
-                var link = "/paginas/circuitos/single.html?id="+ data[i].id;
+                var link = baseUrl+"circuitos/single.html?id="+data[i].id;
                 if (data[i].category == "Evento") {
-                    link = "/paginas/eventos/evento.html?id="+ data[i].id;
+                    link = baseUrl+"eventos/evento.html?id="+ data[i].id;
                 }
 
                 html += '<a href="'+link+'" class="result-item">' +

@@ -1,106 +1,111 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Circuitos Históricos - Turismo Quissamã</title>
 
-        <!--Import Google Icon Font -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>Circuitos Históricos - Turismo Quissamã</title>
 
-        <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-    </head>
+    <!--Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <body>
-        <nav class="nav-extended teal navbar-fixed">
-            <div class="nav-wrapper">
-                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+    <!--Import CSS -->
+    <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/search.css">
+</head>
+
+<body class="main" id="main" data-url="../">
+    <nav class="nav-extended teal navbar-fixed">
+        <div class="nav-wrapper">
+            <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-                <a class="brand-logo center" style="font-size: 1.36em">Roteiros de Visitação</a>
+            <a class="brand-logo center" style="font-size: 1.36em">Roteiros de Visitação</a>
 
-                <a href="#" class="button-search">
+            <a href="#" class="button-search">
                     <i class="material-icons">search</i>
                 </a>
 
-                <div id="search-bar">
-	                <form>
-	        			<div class="input-field">
-							<input id="search-input" type="search" required>
-							<i class="material-icons" id="close-search">close</i>
-						</div>
-					</form>
-				</div>
+            <div id="search-bar">
+                <form>
+                    <div class="input-field">
+                        <input id="search-input" type="search" required>
+                        <i class="material-icons" id="close-search">close</i>
+                    </div>
+                </form>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <div id="content">
-        	<div class="section">
-        		<div class="row" style="margin-bottom: -30px;">
+    <div id="content">
+        <div class="section">
+            <div class="row" style="margin-bottom: -30px;">
 
-        			<!-- Circuito Histórico -->
-        			<div id="card-list"></div>
+                <!-- Circuito Histórico -->
+                <div id="card-list"></div>
 
 
-                    <div id="loader">
-                        <div class="col s12">
-                            <div class="preloader-wrapper big active">
-                                <div class="spinner-layer spinner-green-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div><div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
+                <div id="loader">
+                    <div class="col s12">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-        		</div>
-        	</div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../../assets/js/functions.js"></script>
-        <script>
-            $(document).ready(function () {
-                // Buscando lista na API
-                $.ajax({
-                    method: "GET",
-                    url: "https://turismo-quissama.000webhostapp.com/circuitos"
-                }).done(function( data ) {
-                    
-                    for (var i = 0; i < data.length; i++) {
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/functions.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Buscando lista na API
+            $.ajax({
+                method: "GET",
+                url: "https://turismo-quissama.000webhostapp.com/circuitos"
+            }).done(function(data) {
 
-                        if( data[i].categoria_id == $(window).GetURLParameter('id') ) {
-                            var id      = data[i].id;
-                            var nome    = data[i].nome;
-                            var imagem  = "../../assets/img/default.jpg";
-                            var html    = "";
-                            if(data[i].imagens.length > 0) {
-                                imagem = data[i].imagens[0].url;
-                            }
+                for (var i = 0; i < data.length; i++) {
 
-                            html += '<div class="col s12"><a href="./lista.html?id='+ id +'"><div class="card card-center"><div class="card-image">';
-                            html += '<img src="'+imagem+'">';
-                            html += '<div class="card-content"><h5 class="white-text">';
-                            html += nome;
-                            html += '</h5></div></div></div></a></div>';
-
-                            $('#card-list').append(html);
+                    if (data[i].categoria_id == $(window).GetURLParameter('id')) {
+                        var id = data[i].id;
+                        var nome = data[i].nome;
+                        var imagem = "../../assets/img/default.jpg";
+                        var html = "";
+                        if (data[i].imagens.length > 0) {
+                            imagem = data[i].imagens[0].url;
                         }
-                    }
 
-                    $("#loader").hide();
-                    
-                });
+                        html += '<div class="col s12"><a href="./lista.html?id=' + id + '"><div class="card card-center"><div class="card-image">';
+                        html += '<img src="' + imagem + '">';
+                        html += '<div class="card-content"><h5 class="white-text">';
+                        html += nome;
+                        html += '</h5></div></div></div></a></div>';
+
+                        $('#card-list').append(html);
+                    }
+                }
+
+                $("#loader").hide();
+
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>
