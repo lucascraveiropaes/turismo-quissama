@@ -11,17 +11,18 @@
         <!--Import CSS -->
         <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
         <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="config.css">
+        <link type="text/css" rel="stylesheet" href="../../assets/css/search.css">
+        <link type="text/css" rel="stylesheet" href="agenda.css">
     </head>
 
-    <body class="config">
+    <body class="main" id="main" data-url="../">
         <nav class="nav-extended teal navbar-fixed">
             <div class="nav-wrapper">
                 <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-                <a href="#" class="brand-logo center" style="font-size: 1.65em">Agenda</a>
+                <a href="#" class="brand-logo center" style="font-size: 1.5em">Agenda Telefônica</a>
 
                 <a href="#" class="button-search">
                     <i class="material-icons">search</i>
@@ -39,23 +40,18 @@
         </nav>
 
         <div id="content">
-        	<div class="section">
-
+            <div class="section">
                 <div class="row">
-                    <ul class="collection">
-                        <!-- Perfil -->
-                        <li class="collection-item avatar">
-                            <span class="agenda-icon">A</span>
+                    <div class="top-card">
+                        <img src="../../assets/img/icons/logo.png" class="circle">
+                    </div>
+                </div>
 
-                            <span class="title">Amanda</span>
-                        </li>
-                        <li class="collection-item avatar">
-                            <span class="agenda-icon">L</span>
+                <div id="loader"></div>
 
-                            <span class="title">Lucas</span>
-                        </li>
+                <div class="row" id="agenda-list">
+                    <ul class="collapsible" data-collapsible="accordion">
                     </ul>
-                              
                 </div>
             </div>
         </div>
@@ -65,26 +61,70 @@
         <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
 
-
-        <style>
-            .agenda-icon {
-                background: #00FF00;
-                position: absolute;
-                margin: 10px;
-                height: 40px;
-                width: 40px;
-                left: 0;
-                top: 0;
-                padding: 10px;
-                border-radius: 50%;
-                text-align: center
-            }
-        </style>
-
         <script>
-            $(document).ready( function() {
-                $('.agenda-icon').each(function() {
-                    $('.agenda-icon').css("background", gera_cor());
+            function generateColors() {
+                var url = "https://turismo-quissama.000webhostapp.com/agenda/";
+                var colors = {};
+                var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+                for(var i = 0; i < alphabet.length; i++) {
+                    var color = "#000000".replace(/0/g, function(){
+                        return (~~(Math.random()*16)).toString(16);
+                    });
+
+                    colors[alphabet[i]] = color;
+                }
+
+                return colors
+            }
+
+            $(document).ready(function () {
+                $('#loader').append(loader());
+                $("#agenda-list").hide();
+                
+                $.ajax({
+                    method: "GET",
+                    url: "https://turismo-quissama.000webhostapp.com/agenda/"
+                }).done(function( data ) {
+                    var html = "";
+                    var colors = generateColors();
+
+                    for(var i=0; i < data.length; i++) {
+                        var id          = data[i].id;
+                        var nome        = data[i].nome;
+                        var firstLetter = nome.substr(0, 1);
+                        var telefones   = data[i].telefones;
+                        var endereco    = data[i].endereco;
+                        var color       = colors[firstLetter.toLowerCase()];
+                        nome = (nome.length > 30) ? nome.substr(0, 30) + '...' : nome;
+
+                        console.log(color);
+
+                        html += '<li>' +
+                                    '<div class="collapsible-header">' +
+                                        '<span class="agenda-icon" style="background: '+color+'">'+ firstLetter +'</span>' +
+                                        '<h5 class="agenda-name">'+ nome +'</h5>' +
+                                    '</div>' +
+                                    '<div class="collapsible-body">' +
+                                        '<div class="agenda-content">' +
+                                            '<h5 class="title">Telefones: </h5>' +
+                                            '<p class="text">'+ telefones.join("  /  ") +'</p>' +
+                                        '</div>' +
+                                        '<div class="agenda-content">' +
+                                            '<h5 class="title">Endereço: </h5>' +
+                                            '<p class="text">'+ endereco +'</p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</li>';
+
+
+                    } 
+
+                    
+                    $("#agenda-list .collapsible").html( html );
+
+                    $("#loader").hide(); 
+                    $("#agenda-list").show(); 
                 });
             });
 

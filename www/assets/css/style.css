@@ -200,7 +200,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 	    display: inline-block;
 	    text-align: center;
 	}
-
+	
 	.collection .collection-item.avatar .title {
 	    position: absolute;
 	    top: 20px;
@@ -410,11 +410,13 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 /* Config */
 
-	.config .top-card {
+	.config .top-card,
+	.main .top-card {
 		margin-top: 20px;
 		text-align: center;
 	}
-		.config .top-card img {
+		.config .top-card img,
+		.main .top-card img {
 			width: 30%;
 			display: inline-flex;
 			background: #FFF;
