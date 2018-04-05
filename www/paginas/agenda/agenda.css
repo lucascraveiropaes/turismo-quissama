@@ -22,15 +22,21 @@
     background: #00FF00;
     height: 40px;
     width: 40px;
-    line-height: 1em;
+    line-height: 1.3em;
     padding: 10px;
     border-radius: 50%;
     text-align: center;
 }
 
 .collapsible-body {
-    padding: 1rem 2rem;
+    padding: 0rem 2rem;
 }
+
+    .collapsible-body h3 {
+        color: #000;
+        font-size: 1.5em;
+        word-wrap: break-word;
+    }
 
     .agenda-name {
         line-height: 2.35em;

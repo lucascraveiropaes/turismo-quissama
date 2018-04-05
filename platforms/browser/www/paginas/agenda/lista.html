@@ -22,9 +22,9 @@
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-                <a href="#" class="brand-logo center" style="font-size: 1.5em">Agenda Telefônica</a>
+                <a class="brand-logo center" style="font-size: 1.5em">Agenda Telefônica</a>
 
-                <a href="#" class="button-search">
+                <a class="button-search">
                     <i class="material-icons">search</i>
                 </a>
 
@@ -62,22 +62,6 @@
         <script type="text/javascript" src="../../assets/js/functions.js"></script>
 
         <script>
-            function generateColors() {
-                var url = "https://turismo-quissama.000webhostapp.com/agenda/";
-                var colors = {};
-                var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-
-                for(var i = 0; i < alphabet.length; i++) {
-                    var color = "#000000".replace(/0/g, function(){
-                        return (~~(Math.random()*16)).toString(16);
-                    });
-
-                    colors[alphabet[i]] = color;
-                }
-
-                return colors
-            }
-
             $(document).ready(function () {
                 $('#loader').append(loader());
                 $("#agenda-list").hide();
@@ -91,21 +75,23 @@
 
                     for(var i=0; i < data.length; i++) {
                         var id          = data[i].id;
-                        var nome        = data[i].nome;
-                        var firstLetter = nome.substr(0, 1);
+                        var nomeComplet = data[i].nome;
+                        var firstLetter = nomeComplet.substr(0, 1);
                         var telefones   = data[i].telefones;
                         var endereco    = data[i].endereco;
-                        var color       = colors[firstLetter.toLowerCase()];
-                        nome = (nome.length > 30) ? nome.substr(0, 30) + '...' : nome;
+                        var background  = colors[firstLetter.toLowerCase()].background;
+                        var color  = colors[firstLetter.toLowerCase()].color;
+                        var nome = (nomeComplet.length > 27) ? nomeComplet.substr(0, 27) + '...' : nomeComplet;
 
-                        console.log(color);
+                        console.log(background, color);
 
                         html += '<li>' +
                                     '<div class="collapsible-header">' +
-                                        '<span class="agenda-icon" style="background: '+color+'">'+ firstLetter +'</span>' +
+                                        '<span class="agenda-icon" style="background: '+background+'; color: '+ color +'">'+ firstLetter +'</span>' +
                                         '<h5 class="agenda-name">'+ nome +'</h5>' +
                                     '</div>' +
                                     '<div class="collapsible-body">' +
+                                        '<h3>'+ nomeComplet +'</h3>' +
                                         '<div class="agenda-content">' +
                                             '<h5 class="title">Telefones: </h5>' +
                                             '<p class="text">'+ telefones.join("  /  ") +'</p>' +
@@ -116,10 +102,7 @@
                                         '</div>' +
                                     '</div>' +
                                 '</li>';
-
-
-                    } 
-
+                    }
                     
                     $("#agenda-list .collapsible").html( html );
 
@@ -127,17 +110,6 @@
                     $("#agenda-list").show(); 
                 });
             });
-
-            function gera_cor(){
-                var hexadecimais = '0123456789ABCDEF';
-                var cor = '#';
-              
-                // Pega um número aleatório no array acima
-                for (var i = 0; i < 6; i++ ) {
-                //E concatena à variável cor
-                    cor += hexadecimais[Math.floor(Math.random() * 16)];
-                } 
-            }
         </script>
     </body>
 </html>

@@ -30,16 +30,22 @@ $(document).ready(function(){
                 if (imagem == "") {
                     imagem = baseUrl+"../assets/img/default.jpg";
                 }
+                imagem = '<div class="result-item-image" style="background-image: url('+imagem+')"></div>';
 
                 var link = baseUrl+"circuitos/single.html?id="+data[i].id;
                 if (data[i].category == "Evento") {
                     link = baseUrl+"eventos/evento.html?id="+ data[i].id;
                 }
-    
-                //border-bottom: 1px solid ;
-    
+                else if (data[i].category == "Agenda") {
+                    var letter = data[i].nome.substr(0, 1);
+                    var colors = generateColors();
+
+                    link = baseUrl+"agenda/lista.html?id="+ data[i].id;
+                    imagem = '<div class="result-item-image" style="background: '+ colors[letter.toLowerCase()].background +'"><h3 style="color: '+colors[letter.toLowerCase()].color+'">'+ letter +'</h3></div>';
+                }
+        
                 html += '<a href="'+link+'" class="result-item">' +
-                            '<div class="result-item-image" style="background-image: url('+imagem+')"></div>' +
+                            imagem +
                             '<div class="result-item-content">' +
                                 '<h4>'+data[i].nome+'</h4>' +
                                 '<p>'+data[i].excerpt+'</p>' +
@@ -185,4 +191,50 @@ function formatDate(date1 = "", date2 = "") {
     }
 
     return response;
+}
+
+
+function invertColor(hex, bw) {
+    if (hex.indexOf('#') === 0) {
+        hex = hex.slice(1);
+    }
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+        throw new Error('Invalid HEX color.');
+    }
+    var r = parseInt(hex.slice(0, 2), 16),
+        g = parseInt(hex.slice(2, 4), 16),
+        b = parseInt(hex.slice(4, 6), 16);
+    if (bw) {
+        return (r * 0.299 + g * 0.587 + b * 0.114) > 186
+            ? '#000000'
+            : '#FFFFFF';
+    }
+
+    r = (255 - r).toString(16);
+    g = (255 - g).toString(16);
+    b = (255 - b).toString(16);
+
+    return "#" + padZero(r) + padZero(g) + padZero(b);
+}
+
+function generateColors() {
+    var url = "https://turismo-quissama.000webhostapp.com/agenda/";
+    var colors = {};
+    var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+    for(var i = 0; i < alphabet.length; i++) {
+        var color = "#000000".replace(/0/g, function(){
+            return (~~(Math.random()*16)).toString(16);
+        });
+
+        colors[alphabet[i]] = {
+            background: color,
+            color: invertColor(color, true)
+        };
+    }
+
+    return colors
 }
