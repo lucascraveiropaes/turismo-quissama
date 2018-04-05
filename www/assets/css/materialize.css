@@ -7518,9 +7518,9 @@ input[type=range]:focus::-ms-fill-upper {
     height: 60px;
     width: 60px;
     margin: auto;
-    padding: 5px;
+    padding: 2px;
     border-radius: 50%;
-    border: 1px solid #d6d6d6;
+    /*border: 1px solid #d6d6d6;*/
 }
 
 .side-nav .user-view .name,

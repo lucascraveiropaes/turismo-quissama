@@ -35,7 +35,9 @@ $(document).ready(function(){
                 if (data[i].category == "Evento") {
                     link = baseUrl+"eventos/evento.html?id="+ data[i].id;
                 }
-
+    
+                //border-bottom: 1px solid ;
+    
                 html += '<a href="'+link+'" class="result-item">' +
                             '<div class="result-item-image" style="background-image: url('+imagem+')"></div>' +
                             '<div class="result-item-content">' +
@@ -44,6 +46,12 @@ $(document).ready(function(){
                             '</div>' +
                             '<span class="result-item-category">'+data[i].category+'</span>' +
                         '</a>';
+
+                if (i != (data.length-1)) {
+                    html += '<div class="divider"></div>';
+                }
+
+
                 $("#search-result").html( html );
             }
         });
