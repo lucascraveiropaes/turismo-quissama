@@ -25,63 +25,10 @@
         </nav>
 
         <div id="content">
-        	<div class="section">
-			  	<div class="row">
+            <div class="section">
+                <div id="card-list" style="padding: 15px"></div>
 
-        			<!-- Card 1 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/bg/jurubatiba.jpg">
-
-				              	<a href="./recreacao/caminhada.html" class="card-content">
-						          	<h5 class="white-text">Caminhada/corrida</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
-
-        			<!-- Card 2 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/bg/canal-campos-macae.jpg">
-
-				              	<a href="recreacao/pedalada.html" class="card-content">
-						          	<h5 class="white-text">Pedalada</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
-
-        			<!-- Card 3 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/comercio/moraes.jpg">
-
-				              	<a href="recreacao/nado.html" class="card-content">
-						          	<h5 class="white-text">Nado</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
-
-        			<!-- Card 4 -->
-        			<div class="col s12">
-    					<div class="card card-center">
-					        <div class="card-image waves-effect waves-light">
-				              	<img src="../assets/img/bg/canal-campos-macae.jpg">
-
-				              	<a href="./eventos/eventos.html" class="card-content">
-						          	<h5 class="white-text">Eventos</h5>
-						        </a>
-					        </div>
-	        			</div>
-        			</div>
-
-
-            	</div>
+                <div id="loader"></div>
             </div>
         </div>
 
@@ -89,5 +36,37 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
         <script type="text/javascript" src="../assets/js/functions.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#loader').append( loader() );
+                
+                $.ajax({
+                    method: "GET",
+                    url: "https://turismo-quissama.000webhostapp.com/recreacao"
+                }).done(function( data ) {
+                    for (var i = 0; i < data.length; i++) {
+                        var itemId      = data[i].id;
+                        var nome    = data[i].nome;
+                        var imagem  = "../assets/img/default.jpg";
+                        var html    = "";
+                        if(data[i].imagens.length > 0) {
+                            imagem = data[i].imagens[0].url;
+                        }
+                        
+                        html += '<div class="col s12"><div class="card card-center"><div class="card-image waves-effect waves-light">';
+                        html += '<img src="'+imagem+'">';
+
+                        html += '<a href="./single.html?id='+ itemId +'&category=recreacao" class="card-content"><h5 class="white-text">'+nome+'</h5></a>';
+                        html += '</div></div></div>';
+
+                        $('#card-list').append(html);
+                    }
+
+                    $("#loader").hide();
+                    
+                });
+            });
+        </script>
     </body>
 </html>

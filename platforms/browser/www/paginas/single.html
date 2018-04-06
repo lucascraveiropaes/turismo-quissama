@@ -9,10 +9,10 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="../../assets/css/single.css">
-        <link type="text/css" rel="stylesheet" href="../../assets/plugins/lightbox2/src/css/lightbox.min.css">
+        <link type="text/css" rel="stylesheet" href="../assets/css/materialize.css">
+        <link type="text/css" rel="stylesheet" href="../assets/css/style.css">
+        <link type="text/css" rel="stylesheet" href="../assets/css/single.css">
+        <link type="text/css" rel="stylesheet" href="../assets/plugins/lightbox2/src/css/lightbox.min.css">
     </head>
 
     <body class="config">
@@ -32,7 +32,7 @@
             <div class="section-top">
                 <div class="card">
                     <div class="card-image">
-                        <img src="../../assets/img/bg/jurubatiba.jpg" class="image-blur" id="section-card-bg">
+                        <img src="../assets/img/bg/jurubatiba.jpg" class="image-blur" id="section-card-bg">
 
                         <div class="card-content">
                             <h4 id="lugar-nome"></h4>
@@ -74,9 +74,9 @@
         
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../../assets/plugins/lightbox2/src/js/lightbox.js"></script>
-        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../../assets/js/functions.js"></script>
+        <script src="../assets/plugins/lightbox2/src/js/lightbox.js"></script>
+        <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../assets/js/functions.js"></script>
 
         <style>
             .galery-image {
@@ -91,7 +91,12 @@
                 $('#loader').append(loader());
 
                 var id = $(window).GetURLParameter('id');
+                var category = $(window).GetURLParameter('category');
                 var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
+
+                if (typeof category !== "undefined") {
+                    url = "https://turismo-quissama.000webhostapp.com/"+ category +"/" + id;
+                }
 
                 $.ajax({
                     method: "GET",
@@ -122,7 +127,7 @@
                             fotos += '<a '+ style +' class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
                         }
                     } else {
-                        bg = "../../assets/img/default.jpg";
+                        bg = "../assets/img/default.jpg";
                         fotos += '<a class="galery-image" style="max-width: 100%" href="'+bg+'" data-lightbox="single"><img class="responsive-img" src="'+bg+'" alt="image-1"/></a>'
                     }
                     
@@ -136,7 +141,7 @@
 
                     var mapProps = {
                         width: window.innerWidth-30,
-                        height: 250,
+                        height: 350,
                         lat: data.latitude,
                         lng: data.longitude
                     }

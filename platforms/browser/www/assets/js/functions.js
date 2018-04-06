@@ -32,9 +32,9 @@ $(document).ready(function(){
                 }
                 imagem = '<div class="result-item-image" style="background-image: url('+imagem+')"></div>';
 
-                var link = baseUrl+"circuitos/single.html?id="+data[i].id;
+                var link = baseUrl+"single.html?id="+data[i].id;
                 if (data[i].category == "Evento") {
-                    link = baseUrl+"eventos/evento.html?id="+ data[i].id;
+                    link = link = baseUrl+"single.html?category=eventos&id="+data[i].id;
                 }
                 else if (data[i].category == "Agenda") {
                     var letter = data[i].nome.substr(0, 1);
