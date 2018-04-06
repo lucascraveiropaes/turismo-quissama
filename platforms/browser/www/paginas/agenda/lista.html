@@ -18,7 +18,7 @@
     <body class="main" id="main" data-url="../">
         <nav class="nav-extended teal navbar-fixed">
             <div class="nav-wrapper">
-                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+                <a href="../main.html" class="left menu-link waves-effect waves-circle waves-light">
                     <i class="material-icons">arrow_back</i>
                 </a>
 
@@ -85,7 +85,7 @@
 
                         console.log(background, color);
 
-                        html += '<li>' +
+                        html += '<li id="'+ id +'">' +
                                     '<div class="collapsible-header">' +
                                         '<span class="agenda-icon" style="background: '+background+'; color: '+ color +'">'+ firstLetter +'</span>' +
                                         '<h5 class="agenda-name">'+ nome +'</h5>' +

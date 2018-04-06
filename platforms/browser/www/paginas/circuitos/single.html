@@ -61,6 +61,7 @@
                     <div id="informacoes" class="col s12">
                         <p id="lugar-informacoes"></p>
                         <div id="informacoes-extra"></div>
+                        <div id='map'></div>
                     </div>
                     <div id="fotos" class="col s12" style="padding: 0">
                         <div id="lugar-fotos" style="margin-top: -3px"></div>
@@ -69,19 +70,8 @@
             </div>
         </div>
 
-        <div id="loader" style="padding-top: 300px;">
-            <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-green-only">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
-                        <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="loader" style="padding-top: 300px"></div>
+        
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../../assets/plugins/lightbox2/src/js/lightbox.js"></script>
@@ -98,6 +88,8 @@
 
         <script>
             $(document).ready(function () {
+                $('#loader').append(loader());
+
                 var id = $(window).GetURLParameter('id');
                 var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
 
@@ -140,6 +132,16 @@
                     $("#lugar-descricao").html( descricao );
                     $("#lugar-informacoes").html( informacoes );
                     $("#lugar-fotos").append( fotos );
+
+
+                    var mapProps = {
+                        width: window.innerWidth-30,
+                        height: 250,
+                        lat: data.latitude,
+                        lng: data.longitude
+                    }
+
+                    $("#map").append('<img src="http://maps.googleapis.com/maps/api/staticmap?center='+mapProps.lat+','+mapProps.lng+'&zoom=19&size='+mapProps.width+'x'+mapProps.height+'">');
 
                     $('#conteudo').show();
 

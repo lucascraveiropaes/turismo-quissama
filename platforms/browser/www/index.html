@@ -49,9 +49,11 @@
 <script type="text/javascript" src="assets/js/jquery.pulse.min.js"></script>
 
 <script type="text/javascript">
-    window.onload = pulse();
+    window.onload = setTimeout(function() {
+        window.location.replace("./paginas/main.html")
+    }, 4000);
 
-    function pulse() {
+    /*function pulse() {
         var img = $('img');
         var originalWidth = img.width();
 
@@ -67,7 +69,7 @@
         setTimeout(function() {
             window.location.replace("./paginas/main.html")
         }, 4000);
-    }
+    }*/
 </script>
 
 </html>

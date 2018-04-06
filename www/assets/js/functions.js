@@ -40,7 +40,7 @@ $(document).ready(function(){
                     var letter = data[i].nome.substr(0, 1);
                     var colors = generateColors();
 
-                    link = baseUrl+"agenda/lista.html?id="+ data[i].id;
+                    link = baseUrl+"agenda/lista.html?#"+ data[i].id;
                     imagem = '<div class="result-item-image" style="background: '+ colors[letter.toLowerCase()].background +'"><h3 style="color: '+colors[letter.toLowerCase()].color+'">'+ letter +'</h3></div>';
                 }
         
