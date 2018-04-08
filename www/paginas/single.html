@@ -106,7 +106,7 @@
                 </li>
                 <li>
                     <a href="#" target="_blank" title="Whatsapp" rel="nofollow" class="external-link whatsapp">
-                        <img style="width: 55px" src="../assets/img/share-buttons/whatsapp.png">
+                        <img style="width: 57px; margin-bottom: -3px" src="../assets/img/share-buttons/whatsapp.png">
                     </a>
                 </li>
             </ul>
@@ -145,9 +145,6 @@
                 method: "GET",
                 url: url
             }).done(function(data) {
-
-                console.log(data.categoria);
-
                 setShareLinks(data);
 
                 var id = data.id;
@@ -162,7 +159,9 @@
                 var extra = "";
 
                 if (typeof data.funcionamento_inicio !== "undefined") {
-                    var horario = data.funcionamento_inicio.substr(0, 4) + "h - " + data.funcionamento_fim.substr(0, 4) + "h";
+                    var inicio = data.funcionamento_inicio.split(":")[0] + ":" + data.funcionamento_inicio.split(":")[1];
+                    var fim = data.funcionamento_fim.split(":")[0] + ":" + data.funcionamento_fim.split(":")[1];
+                    var horario = inicio + "h - " + fim + "h";
                     extra = "<p><b>Horário de Funcionamento</b><br>" + horario + "</p>";
                 }
 
@@ -203,8 +202,8 @@
                 }
 
                 $("#map").append('<p><a href="https://www.google.com/maps/search/?api=1&query=' + mapProps.lat + ',' + mapProps.lng +
-                    '">Clique aqui para abrir no Google Maps</a></p><img src="http://maps.googleapis.com/maps/api/staticmap?center=' + mapProps.lat + ',' + mapProps.lng +
-                    '&zoom=19&size=' + mapProps.width + 'x' + mapProps.height + '">');
+                    '">Clique aqui para abrir no Google Maps</p><img src="http://maps.googleapis.com/maps/api/staticmap?center=' + mapProps.lat + ',' + mapProps.lng +
+                    '&zoom=15&scale=1&size=' + mapProps.width + 'x' + mapProps.height + '&maptype=roadmap&format=png&visual_refresh=true"></a>');
 
                 $('#conteudo').show();
 

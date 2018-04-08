@@ -5,6 +5,7 @@
     padding-bottom: 30px;
     width: 100%;
     z-index: 3;
+    margin-top: 15px;
 }
 
 .result-item {
@@ -17,14 +18,14 @@
 
 .result-item h4 {
     color: #000;
-    font-size: 1.45em;
+    font-size: 1.2em;
     margin: 5px 0;
-    padding-right: 30px;
+    padding-right: 14px;
 }
 
 .result-item p {
     color: rgba(0, 0, 0, 0.6);
-    font-size: 1.05em;
+    font-size: 0.95em;
     margin: 5px 0;
 }
 
@@ -34,8 +35,8 @@
 }
 
 .result-item .result-item-image {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
@@ -54,6 +55,7 @@
     float: right;
     color: #f7f7f7;
     font-size: 0.9em;
+    line-height: 1.6em;
     border-bottom-left-radius: 7px;
     border-top-left-radius: 7px;
 }

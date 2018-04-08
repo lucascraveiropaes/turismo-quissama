@@ -1,29 +1,3 @@
-var app = {
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-
-    onDeviceReady: function() {
-        app.amendLinks('external-link');
-    },
-
-    // Find everything with class className and open it
-    // with the InAppBrowser
-    amendLinks: function(className) {
-        var n = 0,
-            links = document.getElementsByClassName(className);
-
-        for (; n < links.length; n++) {
-            links[n].onclick = function(e) {
-                e.preventDefault();
-                window.open(''.concat(this.href), '_blank');
-            }
-        }
-    }
-};
-
-app.initialize();
-
 $('.button-collapse').sideNav({
         menuWidth: 300,
         edge: 'left',
@@ -48,21 +22,26 @@ $(document).ready(function(){
         }).done(function( data ) {
             var html = "";
             var baseUrl = document.getElementById('main').getAttribute('data-url');
+            var colors = generateColors();
 
             for (var i = 0; i < data.length; i++) {
                 var imagem = data[i].imagem;
+                var category = data[i].category;
+                var bg = "";
+
                 if (imagem == "") {
                     imagem = baseUrl+"../assets/img/default.jpg";
                 }
                 imagem = '<div class="result-item-image" style="background-image: url('+imagem+')"></div>';
 
                 var link = baseUrl+"single.html?id="+data[i].id;
-                if (data[i].category == "Evento") {
+                if (category == "Evento") {
+                    bg = 'style="background: #00877e"';
                     link = link = baseUrl+"single.html?category=eventos&id="+data[i].id;
                 }
-                else if (data[i].category == "Agenda") {
+                else if (category == "Agenda") {
+                    bg = 'style="background: #103146"';
                     var letter = data[i].nome.substr(0, 1);
-                    var colors = generateColors();
 
                     link = baseUrl+"agenda/lista.html?#"+ data[i].id;
                     imagem = '<div class="result-item-image" style="background: '+ colors[letter.toLowerCase()].background +'"><h3 style="color: '+colors[letter.toLowerCase()].color+'">'+ letter +'</h3></div>';
@@ -74,7 +53,7 @@ $(document).ready(function(){
                                 '<h4>'+data[i].nome+'</h4>' +
                                 '<p>'+data[i].excerpt+'</p>' +
                             '</div>' +
-                            '<span class="result-item-category">'+data[i].category+'</span>' +
+                            '<span class="result-item-category" '+bg+'>'+category+'</span>' +
                         '</a>';
 
                 if (i != (data.length-1)) {
