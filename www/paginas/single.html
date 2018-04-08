@@ -1,158 +1,217 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Comércio - Turismo Quissamã</title>
 
-        <!--Import Google Icon Font -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>Turismo Quissamã</title>
 
-        <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="../assets/css/single.css">
-        <link type="text/css" rel="stylesheet" href="../assets/plugins/lightbox2/src/css/lightbox.min.css">
-    </head>
+    <!--Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <body class="config">
-        <nav class="nav-extended transparent navbar-fixed navbar-image background-blur">
-            <div class="nav-wrapper">
-                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
-                    <i class="material-icons">arrow_back</i>
-                </a>
+    <!--Import CSS -->
+    <link type="text/css" rel="stylesheet" href="../assets/css/materialize.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/style.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/single.css">
+    <link type="text/css" rel="stylesheet" href="../assets/plugins/lightbox2/src/css/lightbox.min.css">
+</head>
 
-                <a href="#" class="right menu-link waves-effect waves-circle waves-light">
-                    <i class="material-icons">share</i>
-                </a>
-            </div>
-        </nav>
+<body class="config">
+    <nav class="nav-extended transparent navbar-fixed navbar-image background-blur">
+        <div class="nav-wrapper">
+            <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+                <i class="material-icons">arrow_back</i>
+            </a>
 
-        <div id="conteudo" style="display: none">
-            <div class="section-top">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="../assets/img/bg/jurubatiba.jpg" class="image-blur" id="section-card-bg">
+            <a class="share-icon right menu-link waves-effect waves-circle waves-light">
+                <i class="material-icons">share</i>
+            </a>
+        </div>
+    </nav>
 
-                        <div class="card-content">
-                            <h4 id="lugar-nome"></h4>
-                        </div>
-                    </div>
-                    <ul class="tabs">
-                        <li class="tab col s3">
-                            <a class="active" href="#descricao">Descrição</a>
-                        </li>
-                        <li class="tab col s3">
-                            <a href="#informacoes">Informações</a>
-                        </li>
-                        <li class="tab col s3">
-                            <a href="#fotos">Fotos</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div id="conteudo" style="display: none">
+        <a data-target="category-modal" class="modal-trigger z-depth-4 category-content waves-effect waves-light">
+            <img src="" id="category-modal-image" />
+        </a>
 
-            <div id="content">
-                <div class="row">
-                        
-                    <div id="descricao" class="col s12">
-                        <p id="lugar-descricao"></p>
-                    </div>
-                    <div id="informacoes" class="col s12">
-                        <p id="lugar-informacoes"></p>
-                        <div id="informacoes-extra"></div>
-                        <div id='map'></div>
-                    </div>
-                    <div id="fotos" class="col s12" style="padding: 0">
-                        <div id="lugar-fotos" style="margin-top: -3px"></div>
+        <div class="section-top">
+            <div class="card">
+                <div class="card-image">
+                    <img src="../assets/img/bg/jurubatiba.jpg" class="image-blur" id="section-card-bg">
+
+                    <div class="card-content">
+                        <h4 id="lugar-nome"></h4>
                     </div>
                 </div>
+                <ul class="tabs">
+                    <li class="tab col s3">
+                        <a class="active" href="#descricao">Descrição</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a href="#informacoes">Informações</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a href="#fotos">Fotos</a>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div id="loader" style="padding-top: 300px"></div>
-        
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../assets/plugins/lightbox2/src/js/lightbox.js"></script>
-        <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../assets/js/functions.js"></script>
+        <div id="content">
+            <div class="row">
 
-        <style>
-            .galery-image {
-                max-width: calc(50% - 10px);
-                margin: 2px 5px;
-                float: left;
+                <div id="descricao" class="col s12">
+                    <p id="lugar-descricao"></p>
+                </div>
+                <div id="informacoes" class="col s12">
+                    <p id="lugar-informacoes"></p>
+                    <div id="informacoes-extra"></div>
+                    <div id='map'></div>
+                </div>
+                <div id="fotos" class="col s12" style="padding: 0">
+                    <div id="lugar-fotos" style="margin-top: -3px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader" style="padding-top: 300px"></div>
+
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <h5 id="modal-title">Título da Sinalização</h5>
+            <p id="modal-text">Texto Descritivo sobre a sinalização</p>
+        </div>
+        <div class="modal-footer">
+            <span class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</span>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal">
+        <!-- Modal Content -->
+        <div class="share-modal-opacity"></div>
+        <div class="share-content">
+            <h4>Compartilhar:</h4>
+            <ul class="share-icons">
+                <li>
+                    <a target="_blank" title="Facebook" rel="nofollow" class="external-link facebook">
+                        <img class="z-depth-2" src="../assets/img/share-buttons/facebook.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Twitter" rel="nofollow" class="external-link twitter">
+                        <img class="z-depth-2 circle" src="../assets/img/share-buttons/twitter.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="Whatsapp" rel="nofollow" class="external-link whatsapp">
+                        <img style="width: 55px" src="../assets/img/share-buttons/whatsapp.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../assets/plugins/lightbox2/src/js/lightbox.js"></script>
+    <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../assets/js/functions.js"></script>
+    <script type="text/javascript" src="../assets/js/share.js"></script>
+
+    <style>
+        .galery-image {
+            max-width: calc(50% - 10px);
+            margin: 2px 5px;
+            float: left;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('.modal').modal();
+            $('#loader').append(loader());
+
+            var id = $(window).GetURLParameter('id');
+            var category = $(window).GetURLParameter('category');
+            var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
+
+            if (typeof category !== "undefined") {
+                url = "https://turismo-quissama.000webhostapp.com/" + category + "/" + id;
             }
-        </style>
 
-        <script>
-            $(document).ready(function () {
-                $('#loader').append(loader());
+            $.ajax({
+                method: "GET",
+                url: url
+            }).done(function(data) {
 
-                var id = $(window).GetURLParameter('id');
-                var category = $(window).GetURLParameter('category');
-                var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
+                console.log(data.categoria);
 
-                if (typeof category !== "undefined") {
-                    url = "https://turismo-quissama.000webhostapp.com/"+ category +"/" + id;
+                setShareLinks(data);
+
+                var id = data.id;
+                var nome = data.nome;
+                var descricao = data.descricao;
+                var categoria_image = data.categoria.imagem;
+                var informacoes = data.informacoes;
+                var imagens = data.imagens;
+                var endereco = data.endereco;
+                var fotos = "";
+                var bg = "";
+                var extra = "";
+
+                if (typeof data.funcionamento_inicio !== "undefined") {
+                    var horario = data.funcionamento_inicio.substr(0, 4) + "h - " + data.funcionamento_fim.substr(0, 4) + "h";
+                    extra = "<p><b>Horário de Funcionamento</b><br>" + horario + "</p>";
                 }
 
-                $.ajax({
-                    method: "GET",
-                    url: url
-                }).done(function( data ) { //imagem_existe
+                if (imagens.length > 0) {
+                    bg = imagens[0].url;
+                    style = 'style="max-width: 100%"';
 
-                    var id          = data.id;
-                    var nome        = data.nome;
-                    var descricao   = data.descricao;
-                    var informacoes = data.informacoes;
-                    var imagens     = data.imagens;
-                    var endereco    = data.endereco;
-                    var horario     = data.funcionamento_inicio + "h - " + data.funcionamento_fim + "h";
-                    var fotos       = "";
-                    var bg          = "";
+                    for (i = 0; i < imagens.length; i++) {
+                        if (imagens.length > 1)
+                            style = "";
 
-                    var extra = "<p><b>Horário de Funcionamento</b></p>";
-                    extra += "<p>"+horario+"</p>";
-
-                    if (imagens.length > 0) {
-                        bg = imagens[0].url;
-                        style = 'style="max-width: 100%"';
-                        
-                        for (i = 0; i < imagens.length; i++) {
-                            if (imagens.length > 1)
-                                style="";
-
-                            fotos += '<a '+ style +' class="galery-image" href="'+ imagens[i].url +'" data-lightbox="single"><img class="responsive-img" src="'+ imagens[i].url +'" alt="image-'+i+'"/></a>'
-                        }
-                    } else {
-                        bg = "../assets/img/default.jpg";
-                        fotos += '<a class="galery-image" style="max-width: 100%" href="'+bg+'" data-lightbox="single"><img class="responsive-img" src="'+bg+'" alt="image-1"/></a>'
+                        fotos += '<a ' + style + ' class="galery-image" href="' + imagens[i].url + '" data-lightbox="single"><img class="responsive-img" src="' + imagens[i].url + '" alt="image-' + i + '"/></a>'
                     }
-                    
-                    $("#informacoes-extra").html( extra );
-                    $("#section-card-bg").attr("src", bg );
-                    $("#lugar-nome").html( nome );
-                    $("#lugar-descricao").html( descricao );
-                    $("#lugar-informacoes").html( informacoes );
-                    $("#lugar-fotos").append( fotos );
+                } else {
+                    bg = "../assets/img/default.jpg";
+                    fotos += '<a class="galery-image" style="max-width: 100%" href="' + bg + '" data-lightbox="single"><img class="responsive-img" src="' + bg + '" alt="image-1"/></a>'
+                }
 
+                if (typeof categoria_image !== undefined && categoria_image !== "") {
+                    $("#category-modal-image").attr("src", categoria_image);
+                    $("#modal-title").html(data.categoria.nome);
+                    $("#modal-text").html(data.categoria.descricao);
+                } else {
+                    $(".category-content").hide();
+                }
+                $("#informacoes-extra").html(extra);
+                $("#section-card-bg").attr("src", bg);
+                $("#lugar-nome").html(nome);
+                $("#lugar-descricao").html(descricao);
+                $("#lugar-informacoes").html(informacoes);
+                $("#lugar-fotos").append(fotos);
 
-                    var mapProps = {
-                        width: window.innerWidth-30,
-                        height: 350,
-                        lat: data.latitude,
-                        lng: data.longitude
-                    }
+                var mapProps = {
+                    width: window.innerWidth - 30,
+                    height: 350,
+                    lat: data.latitude,
+                    lng: data.longitude
+                }
 
-                    $("#map").append('<img src="http://maps.googleapis.com/maps/api/staticmap?center='+mapProps.lat+','+mapProps.lng+'&zoom=19&size='+mapProps.width+'x'+mapProps.height+'">');
+                $("#map").append('<p><a href="https://www.google.com/maps/search/?api=1&query=' + mapProps.lat + ',' + mapProps.lng +
+                    '">Clique aqui para abrir no Google Maps</a></p><img src="http://maps.googleapis.com/maps/api/staticmap?center=' + mapProps.lat + ',' + mapProps.lng +
+                    '&zoom=19&size=' + mapProps.width + 'x' + mapProps.height + '">');
 
-                    $('#conteudo').show();
+                $('#conteudo').show();
 
-                    $("#loader").hide();   
-                });
+                $("#loader").hide();
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>

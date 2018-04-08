@@ -1,10 +1,34 @@
+var app = {
+    initialize: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+
+    onDeviceReady: function() {
+        app.amendLinks('external-link');
+    },
+
+    // Find everything with class className and open it
+    // with the InAppBrowser
+    amendLinks: function(className) {
+        var n = 0,
+            links = document.getElementsByClassName(className);
+
+        for (; n < links.length; n++) {
+            links[n].onclick = function(e) {
+                e.preventDefault();
+                window.open(''.concat(this.href), '_blank');
+            }
+        }
+    }
+};
+
+app.initialize();
+
 $('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 300
-        edge: 'left', // Choose the horizontal origin
-        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-        draggable: true //, // Choose whether you can drag to open on touch screens,
-        //onOpen: function(el) { /* Do Stuff */ },
-        //onClose: function(el) { /* Do Stuff */ },
+        menuWidth: 300,
+        edge: 'left',
+        closeOnClick: true,
+        draggable: true
   	}
 );
 
@@ -43,7 +67,7 @@ $(document).ready(function(){
                     link = baseUrl+"agenda/lista.html?#"+ data[i].id;
                     imagem = '<div class="result-item-image" style="background: '+ colors[letter.toLowerCase()].background +'"><h3 style="color: '+colors[letter.toLowerCase()].color+'">'+ letter +'</h3></div>';
                 }
-        
+
                 html += '<a href="'+link+'" class="result-item">' +
                             imagem +
                             '<div class="result-item-content">' +

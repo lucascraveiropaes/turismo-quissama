@@ -1,126 +1,123 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>Comércio - Turismo Quissamã</title>
 
-        <!--Import Google Icon Font -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>Comércio - Turismo Quissamã</title>
 
-        <!--Import CSS -->
-        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
-        <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
-    </head>
+    <!--Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <body class="config">
-        <nav class="nav-extended teal navbar-fixed">
-            <div class="nav-wrapper">
-                <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
+    <!--Import CSS -->
+    <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.css">
+    <link type="text/css" rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body class="config">
+    <nav class="nav-extended teal navbar-fixed">
+        <div class="nav-wrapper">
+            <a href="javascript:history.go(-1)" class="left menu-link waves-effect waves-circle waves-light">
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-                <a href="#" class="brand-logo center" id="page-title" style="font-size: 1.3em; width: 100%;"></a>
-            </div>
-        </nav>
-
-        <div id="content">
-            <div class="section">
-                <div class="row">
-                    <div class="top-card">
-                        <img src="../../assets/img/icons/logo.png" class="circle">
-                    </div>
-                </div>
-
-                <div id="card-list" style="padding: 15px"></div>
-
-                <div id="loader"></div>
-        	</div>
+            <a href="#" class="brand-logo center" id="page-title" style="font-size: 1.3em; width: 100%;"></a>
         </div>
+    </nav>
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="../../assets/js/functions.js"></script>
+    <div id="content">
+        <div class="section">
+            <div class="row">
+                <div class="top-card">
+                    <img src="../../assets/img/icons/logo.png" class="circle">
+                </div>
+            </div>
 
-        <script>
-            $(document).ready(function () {
-                $('#loader').append( loader() );
-                
-                $.ajax({
-                    method: "GET",
-                    url: "https://turismo-quissama.000webhostapp.com/lugares"
-                }).done(function( data ) {
-                    var id = $(window).GetURLParameter('id');
-                    $("#page-title").html( getTitle(id) );
+            <div id="card-list" style="padding: 15px"></div>
 
-                    var content = validate(id, data);
+            <div id="loader"></div>
+        </div>
+    </div>
 
-                    for (var i = 0; i < content.length; i++) {
-                        var itemId      = content[i].id;
-                        var nome    = content[i].nome;
-                        var imagem  = "../../assets/img/default.jpg";
-                        var html    = "";
-                        if(content[i].imagens.length > 0) {
-                            imagem = content[i].imagens[0].url;
-                        }
-                        
-                        html += '<div class="col s12"><div class="card card-center"><div class="card-image waves-effect waves-light">';
-                        html += '<img src="'+imagem+'">';
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/functions.js"></script>
 
-                        html += '<a href="../single.html?id='+ itemId +'" class="card-content"><h5 class="white-text">'+nome+'</h5></a>';
-                        html += '</div></div></div>';
+    <script>
+        $(document).ready(function() {
+            $('#loader').append(loader());
 
-                        $('#card-list').append(html);
+            $.ajax({
+                method: "GET",
+                url: "https://turismo-quissama.000webhostapp.com/lugares"
+            }).done(function(data) {
+                var id = $(window).GetURLParameter('id');
+                $("#page-title").html(getTitle(id));
+
+                var content = validate(id, data);
+
+                for (var i = 0; i < content.length; i++) {
+                    var itemId = content[i].id;
+                    var nome = content[i].nome;
+                    var imagem = "../../assets/img/default.jpg";
+                    var html = "";
+                    if (content[i].imagens.length > 0) {
+                        imagem = content[i].imagens[0].url;
                     }
 
-                    $("#loader").hide();
-                    
-                });
+                    html += '<div class="col s12"><div class="card card-center"><div class="card-image waves-effect waves-light">';
+                    html += '<img src="' + imagem + '">';
+
+                    html += '<a href="../single.html?id=' + itemId + '" class="card-content"><h5 class="white-text">' + nome + '</h5></a>';
+                    html += '</div></div></div>';
+
+                    $('#card-list').append(html);
+                }
+
+                $("#loader").hide();
+
             });
+        });
 
-            function validate(ID = 0, data = []) {
-                var response = [];
-                var values = {
-                    1: [7],  // opcao: [ids relacionadas]
-                    2: [6],
-                    3: [5],
-                    4: [18, 41, 42, 43, 44, 45, 46, 49],
-                    5: [2, 17, 19, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31, 32, 33, 34, 50],
-                    6: [48],
-                }
+        function validate(ID = 0, data = []) {
+            var response = [];
+            var values = {
+                1: [7], // opcao: [ids relacionadas]
+                2: [6],
+                3: [5],
+                4: [18, 41, 42, 43, 44, 45, 46, 49],
+                5: [2, 17, 19, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31, 32, 33, 34, 50],
+                6: [48],
+            }
 
-                for (var i = 0; i < values[ID].length; i++) {
-                    for (var j = 0; j < data.length; j++) {
-                        if (values[ID][i] == parseInt(data[j].categoria_id)) {
-                            response.push(data[j]);
-                        }
+            for (var i = 0; i < values[ID].length; i++) {
+                for (var j = 0; j < data.length; j++) {
+                    if (values[ID][i] == parseInt(data[j].categoria_id)) {
+                        response.push(data[j]);
                     }
                 }
-
-                return response;
             }
 
-            function getTitle(ID) {
-                if(ID == 1) {
-                    return "Lanchonetes e Restaurantes"
-                }
-                else if(ID == 2) {
-                    return "Hotéis e Pousadas"
-                }
-                else if(ID == 3) {
-                    return "Postos de Gasolina"
-                }
-                else if(ID == 4) {
-                    return "Serviços"
-                }
-                else if(ID == 5) {
-                    return "Diversão"
-                }
-                else if(ID == 6) {
-                    return "Bancos"
-                }
+            return response;
+        }
+
+        function getTitle(ID) {
+            if (ID == 1) {
+                return "Lanchonetes e Restaurantes"
+            } else if (ID == 2) {
+                return "Hotéis e Pousadas"
+            } else if (ID == 3) {
+                return "Postos de Gasolina"
+            } else if (ID == 4) {
+                return "Serviços"
+            } else if (ID == 5) {
+                return "Diversão"
+            } else if (ID == 6) {
+                return "Bancos"
             }
-        </script>
-    </body>
+        }
+    </script>
+</body>
+
 </html>
