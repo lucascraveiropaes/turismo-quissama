@@ -22,7 +22,7 @@
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-            <a href="#" class="brand-logo center" style="font-size: 1.65em">Eventos</a>
+            <a class="brand-logo center" style="font-size: 1.65em">Eventos</a>
         </div>
     </nav>
 
@@ -52,7 +52,7 @@
 
             $.ajax({
                 method: "GET",
-                url: "https://turismo-quissama.000webhostapp.com/eventos"
+                url: baseURI + "eventos"
             }).done(function(data) {
                 console.log(data);
 
@@ -65,7 +65,7 @@
                         imagem = data[i].imagens[0].url;
                     }
 
-                    html += '<div class="col s12"><a href="./evento.html?id=' + id + '"><div class="card card-center"><div class="card-image">';
+                    html += '<div class="col s12"><a href="../single.html?category=eventos&id=' + id + '"><div class="card card-center"><div class="card-image">';
                     html += '<img src="' + imagem + '">';
                     html += '<div class="card-content"><h5 class="white-text">';
                     html += nome;

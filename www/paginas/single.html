@@ -138,7 +138,7 @@
             var url = "https://turismo-quissama.000webhostapp.com/lugares/" + id;
 
             if (typeof category !== "undefined") {
-                url = "https://turismo-quissama.000webhostapp.com/" + category + "/" + id;
+                url = baseURI + category + "/" + id;
             }
 
             $.ajax({
@@ -150,9 +150,9 @@
                 var id = data.id;
                 var nome = data.nome;
                 var descricao = data.descricao;
-                var categoria_image = data.categoria.imagem;
                 var informacoes = data.informacoes;
                 var imagens = data.imagens;
+                var categoria = data.categoria;
                 var endereco = data.endereco;
                 var fotos = "";
                 var bg = "";
@@ -180,10 +180,10 @@
                     fotos += '<a class="galery-image" style="max-width: 100%" href="' + bg + '" data-lightbox="single"><img class="responsive-img" src="' + bg + '" alt="image-1"/></a>'
                 }
 
-                if (typeof categoria_image !== undefined && categoria_image !== "") {
-                    $("#category-modal-image").attr("src", categoria_image);
-                    $("#modal-title").html(data.categoria.nome);
-                    $("#modal-text").html(data.categoria.descricao);
+                if (typeof categoria !== "undefined" && categoria !== "") {
+                    $("#category-modal-image").attr("src", categoria.categoria_image);
+                    $("#modal-title").html(categoria.nome);
+                    $("#modal-text").html(categoria.descricao);
                 } else {
                     $(".category-content").hide();
                 }

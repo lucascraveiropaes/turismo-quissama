@@ -67,7 +67,7 @@
 
             $.ajax({
                 method: "GET",
-                url: "https://turismo-quissama.000webhostapp.com/lugares"
+                url: baseURI + "lugares"
             }).done(function(data) {
 
                 for (var i = 0; i < data.length; i++) {

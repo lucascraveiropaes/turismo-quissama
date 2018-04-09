@@ -21,7 +21,7 @@
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-            <a href="#" class="brand-logo center" id="page-title" style="font-size: 1.3em; width: 100%;"></a>
+            <a class="brand-logo center" id="page-title" style="font-size: 1.3em; width: 100%;"></a>
         </div>
     </nav>
 
@@ -50,7 +50,7 @@
 
             $.ajax({
                 method: "GET",
-                url: "https://turismo-quissama.000webhostapp.com/lugares"
+                url: baseURI + "lugares"
             }).done(function(data) {
                 var id = $(window).GetURLParameter('id');
                 $("#page-title").html(getTitle(id));

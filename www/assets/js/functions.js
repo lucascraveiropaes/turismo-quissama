@@ -1,10 +1,5 @@
-$('.button-collapse').sideNav({
-        menuWidth: 300,
-        edge: 'left',
-        closeOnClick: true,
-        draggable: true
-  	}
-);
+// Constante usada em todo app com a url base que aponta para o servidor
+const baseURI = "https://turismo-quissama.000webhostapp.com/";
 
 $(document).ready(function(){
     $('.main').prepend('<div id="search-result"></div>');
@@ -12,59 +7,21 @@ $(document).ready(function(){
     $('#search-result').hide();
 
     $("#search-input").on("change paste keyup", function() {
+    	clearTimeout("search");
+
         var query = $(this).val();
         $('#content').hide();
         $('#search-result').show();
 
-        $.ajax({
-            method: "GET",
-            url: "https://turismo-quissama.000webhostapp.com/search/"+query,
-        }).done(function( data ) {
-            var html = "";
-            var baseUrl = document.getElementById('main').getAttribute('data-url');
-            var colors = generateColors();
-
-            for (var i = 0; i < data.length; i++) {
-                var imagem = data[i].imagem;
-                var category = data[i].category;
-                var bg = "";
-
-                if (imagem == "") {
-                    imagem = baseUrl+"../assets/img/default.jpg";
-                }
-                imagem = '<div class="result-item-image" style="background-image: url('+imagem+')"></div>';
-
-                var link = baseUrl+"single.html?id="+data[i].id;
-                if (category == "Evento") {
-                    bg = 'style="background: #00877e"';
-                    link = link = baseUrl+"single.html?category=eventos&id="+data[i].id;
-                }
-                else if (category == "Agenda") {
-                    bg = 'style="background: #103146"';
-                    var letter = data[i].nome.substr(0, 1);
-
-                    link = baseUrl+"agenda/lista.html?#"+ data[i].id;
-                    imagem = '<div class="result-item-image" style="background: '+ colors[letter.toLowerCase()].background +'"><h3 style="color: '+colors[letter.toLowerCase()].color+'">'+ letter +'</h3></div>';
-                }
-
-                html += '<a href="'+link+'" class="result-item">' +
-                            imagem +
-                            '<div class="result-item-content">' +
-                                '<h4>'+data[i].nome+'</h4>' +
-                                '<p>'+data[i].excerpt+'</p>' +
-                            '</div>' +
-                            '<span class="result-item-category" '+bg+'>'+category+'</span>' +
-                        '</a>';
-
-                if (i != (data.length-1)) {
-                    html += '<div class="divider"></div>';
-                }
-
-
-                $("#search-result").html( html );
-            }
-        });
+        setTimeout(function(){ search(query) }, 1500);
     });
+
+    $('.button-collapse').sideNav({
+        menuWidth: 300,
+        edge: 'left',
+        closeOnClick: true,
+        draggable: true
+  	});
 
   	$('.button-search').click( function(){
   		$('#search-bar').addClass("search-show");
@@ -88,20 +45,56 @@ $(document).ready(function(){
   	});
 });
 
-/* Transição Entre Páginas */
-$(document).ready(function() {
-    $("body").fadeIn(500);
+function search(query) {
+    $.ajax({
+        method: "GET",
+        url: "https://turismo-quissama.000webhostapp.com/search/"+query,
+    }).done(function( data ) {
+        var html = "";
+        var baseUrl = document.getElementById('main').getAttribute('data-url');
+        var colors = generateColors();
 
-    $("a.transition").click(function(event){
-        event.preventDefault();
-        linkLocation = this.href;
-        $("body").fadeOut(500, redirectPage);
+        for (var i = 0; i < data.length; i++) {
+            var imagem = data[i].imagem;
+            var category = data[i].category;
+            var bg = "";
+
+            if (imagem == "") {
+                imagem = baseUrl+"../assets/img/default.jpg";
+            }
+            imagem = '<div class="result-item-image" style="background-image: url('+imagem+')"></div>';
+
+            var link = baseUrl+"single.html?id="+data[i].id;
+            if (category == "Evento") {
+                bg = 'style="background: #00877e"';
+                link = link = baseUrl+"single.html?category=eventos&id="+data[i].id;
+            }
+            else if (category == "Agenda") {
+                bg = 'style="background: #103146"';
+                var letter = data[i].nome.substr(0, 1);
+
+                link = baseUrl+"agenda/lista.html?#"+ data[i].id;
+                imagem = '<div class="result-item-image" style="background: '+ colors[letter.toLowerCase()].background +'"><h3 style="color: '+colors[letter.toLowerCase()].color+'">'+ letter +'</h3></div>';
+            }
+
+            html += '<a href="'+link+'" class="result-item">' +
+                        imagem +
+                        '<div class="result-item-content">' +
+                            '<h4>'+data[i].nome+'</h4>' +
+                            '<p>'+data[i].excerpt+'</p>' +
+                        '</div>' +
+                        '<span class="result-item-category" '+bg+'>'+category+'</span>' +
+                    '</a>';
+
+            if (i != (data.length-1)) {
+                html += '<div class="divider"></div>';
+            }
+
+
+            $("#search-result").html( html );
+        }
     });
-
-    function redirectPage() {
-        window.location = linkLocation;
-    }
-});
+}
 
 $(document).on('scroll', function () {
     if ( $( "nav" ).hasClass( "navbar-image" ) ) {

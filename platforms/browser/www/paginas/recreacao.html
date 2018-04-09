@@ -20,7 +20,7 @@
                     <i class="material-icons">arrow_back</i>
                 </a>
 
-                <a href="#" class="brand-logo center" style="font-size: 1.65em">Recreação</a>
+                <a class="brand-logo center" style="font-size: 1.65em">Recreação</a>
             </div>
         </nav>
 
@@ -43,7 +43,7 @@
                 
                 $.ajax({
                     method: "GET",
-                    url: "https://turismo-quissama.000webhostapp.com/recreacao"
+                    url: baseURI + "recreacao"
                 }).done(function( data ) {
                     for (var i = 0; i < data.length; i++) {
                         var itemId      = data[i].id;

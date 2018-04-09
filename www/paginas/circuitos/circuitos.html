@@ -77,7 +77,7 @@
             // Buscando lista na API
             $.ajax({
                 method: "GET",
-                url: "https://turismo-quissama.000webhostapp.com/circuitos"
+                url: baseURI + "circuitos"
             }).done(function(data) {
 
                 for (var i = 0; i < data.length; i++) {
